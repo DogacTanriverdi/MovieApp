@@ -1,3 +1,5 @@
+import java.util.Properties
+
 plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.jetbrains.kotlin.android)
@@ -5,6 +7,14 @@ plugins {
     alias(libs.plugins.hilt)
     alias(libs.plugins.ksp)
 }
+
+val localProperties = Properties().apply {
+    val localPropertiesFile = rootProject.file("local.properties")
+    if (localPropertiesFile.exists()) {
+        localPropertiesFile.reader().use { load(it) }
+    }
+}
+val apiKey = localProperties.getProperty("API_KEY") ?: System.getenv("API_KEY")
 
 android {
     namespace = "com.dogactanriverdi.movieapp"
@@ -20,13 +30,24 @@ android {
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    buildFeatures {
+        buildConfig = true
+    }
+
     buildTypes {
         release {
+
             isMinifyEnabled = false
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
+
+            buildConfigField("String", "API_KEY", "\"apiKey\"")
+        }
+
+        debug {
+            buildConfigField("String", "API_KEY", "\"apiKey\"")
         }
     }
     compileOptions {
