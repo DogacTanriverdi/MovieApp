@@ -1,8 +1,8 @@
 package com.dogactanriverdi.movieapp.data.source.remote.mapper.tvseries
 
-import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.trending.ResultDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.trending.TrendingTvSeriesResultDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.trending.TrendingTvSeriesDto
-import com.dogactanriverdi.movieapp.domain.model.tvseries.trending.Result
+import com.dogactanriverdi.movieapp.domain.model.tvseries.trending.TrendingTvSeriesResult
 import com.dogactanriverdi.movieapp.domain.model.tvseries.trending.TrendingTvSeries
 
 fun TrendingTvSeriesDto.toTrendingTvSeries(): TrendingTvSeries {
@@ -14,8 +14,8 @@ fun TrendingTvSeriesDto.toTrendingTvSeries(): TrendingTvSeries {
     )
 }
 
-fun ResultDto.toResult(): Result {
-    return Result(
+fun TrendingTvSeriesResultDto.toResult(): TrendingTvSeriesResult {
+    return TrendingTvSeriesResult(
         adult = adult ?: false,
         backdropPath = backdropPath.orEmpty(),
         genreIds = genreIds ?: emptyList(),

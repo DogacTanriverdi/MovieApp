@@ -8,13 +8,13 @@ data class TvSeriesDetailDto(
     @SerializedName("backdrop_path")
     val backdropPath: String?,
     @SerializedName("created_by")
-    val createdBy: List<CreatedByDto>?,
+    val createdBy: List<TvSeriesDetailCreatedByDto>?,
     @SerializedName("episode_run_time")
     val episodeRunTime: List<Int>?,
     @SerializedName("first_air_date")
     val firstAirDate: String?,
     @SerializedName("genres")
-    val genres: List<GenreDto>?,
+    val genres: List<TvSeriesDetailGenreDto>?,
     @SerializedName("homepage")
     val homepage: String?,
     @SerializedName("id")
@@ -26,13 +26,13 @@ data class TvSeriesDetailDto(
     @SerializedName("last_air_date")
     val lastAirDate: String?,
     @SerializedName("last_episode_to_air")
-    val lastEpisodeToAir: LastEpisodeToAirDto?,
+    val lastEpisodeToAir: TvSeriesDetailLastEpisodeToAirDto?,
     @SerializedName("name")
     val name: String?,
     @SerializedName("networks")
-    val networks: List<NetworkDto>?,
+    val networks: List<TvSeriesDetailNetworkDto>?,
     @SerializedName("next_episode_to_air")
-    val nextEpisodeToAir: NextEpisodeToAirDto?,
+    val nextEpisodeToAir: TvSeriesDetailNextEpisodeToAirDto?,
     @SerializedName("number_of_episodes")
     val numberOfEpisodes: Int?,
     @SerializedName("number_of_seasons")
@@ -50,13 +50,13 @@ data class TvSeriesDetailDto(
     @SerializedName("poster_path")
     val posterPath: String?,
     @SerializedName("production_companies")
-    val productionCompanies: List<ProductionCompanyDto>?,
+    val productionCompanies: List<TvSeriesDetailProductionCompanyDto>?,
     @SerializedName("production_countries")
-    val productionCountries: List<ProductionCountryDto>?,
+    val productionCountries: List<TvSeriesDetailProductionCountryDto>?,
     @SerializedName("seasons")
-    val seasons: List<SeasonDto>?,
+    val seasons: List<TvSeriesDetailSeasonDto>?,
     @SerializedName("spoken_languages")
-    val spokenLanguages: List<SpokenLanguageDto>?,
+    val spokenLanguages: List<TvSeriesDetailSpokenLanguageDto>?,
     @SerializedName("status")
     val status: String?,
     @SerializedName("tagline")

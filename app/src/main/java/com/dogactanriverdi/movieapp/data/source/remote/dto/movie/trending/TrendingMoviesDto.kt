@@ -6,7 +6,7 @@ data class TrendingMoviesDto(
     @SerializedName("page")
     val page: Int?,
     @SerializedName("results")
-    val results: List<ResultDto>?,
+    val results: List<TrendingMoviesResultDto>?,
     @SerializedName("total_pages")
     val totalPages: Int?,
     @SerializedName("total_results")

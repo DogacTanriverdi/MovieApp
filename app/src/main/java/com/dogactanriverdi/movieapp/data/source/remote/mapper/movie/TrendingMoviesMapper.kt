@@ -1,8 +1,8 @@
 package com.dogactanriverdi.movieapp.data.source.remote.mapper.movie
 
-import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.trending.ResultDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.trending.TrendingMoviesResultDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.trending.TrendingMoviesDto
-import com.dogactanriverdi.movieapp.domain.model.movie.trending.Result
+import com.dogactanriverdi.movieapp.domain.model.movie.trending.TrendingMoviesResult
 import com.dogactanriverdi.movieapp.domain.model.movie.trending.TrendingMovies
 
 fun TrendingMoviesDto.toTrendingMovies(): TrendingMovies {
@@ -14,8 +14,8 @@ fun TrendingMoviesDto.toTrendingMovies(): TrendingMovies {
     )
 }
 
-fun ResultDto.toResult(): Result {
-    return Result(
+fun TrendingMoviesResultDto.toResult(): TrendingMoviesResult {
+    return TrendingMoviesResult(
         adult = adult ?: false,
         backdropPath = backdropPath ?: "",
         genreIds = genreIds ?: emptyList(),

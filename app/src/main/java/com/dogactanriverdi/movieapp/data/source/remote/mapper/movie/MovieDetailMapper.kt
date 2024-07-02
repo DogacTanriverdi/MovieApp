@@ -1,24 +1,24 @@
 package com.dogactanriverdi.movieapp.data.source.remote.mapper.movie
 
-import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.BelongsToCollectionDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.GenreDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.MovieDetailBelongsToCollectionDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.MovieDetailGenreDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.MovieDetailDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.ProductionCompanyDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.ProductionCountryDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.SpokenLanguageDto
-import com.dogactanriverdi.movieapp.domain.model.movie.detail.BelongsToCollection
-import com.dogactanriverdi.movieapp.domain.model.movie.detail.Genre
+import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.MovieDetailProductionCompanyDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.MovieDetailProductionCountryDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.MovieDetailSpokenLanguageDto
+import com.dogactanriverdi.movieapp.domain.model.movie.detail.MovieDetailBelongsToCollection
+import com.dogactanriverdi.movieapp.domain.model.movie.detail.MovieDetailGenre
 import com.dogactanriverdi.movieapp.domain.model.movie.detail.MovieDetail
-import com.dogactanriverdi.movieapp.domain.model.movie.detail.ProductionCompany
-import com.dogactanriverdi.movieapp.domain.model.movie.detail.ProductionCountry
-import com.dogactanriverdi.movieapp.domain.model.movie.detail.SpokenLanguage
+import com.dogactanriverdi.movieapp.domain.model.movie.detail.MovieDetailProductionCompany
+import com.dogactanriverdi.movieapp.domain.model.movie.detail.MovieDetailProductionCountry
+import com.dogactanriverdi.movieapp.domain.model.movie.detail.MovieDetailSpokenLanguage
 
 fun MovieDetailDto.toMovieDetail(): MovieDetail {
     return MovieDetail(
         adult = adult ?: false,
         backdropPath = backdropPath.orEmpty(),
         belongsToCollection = belongsToCollection?.toBelongsToCollection()
-            ?: BelongsToCollection("", -1, "", ""),
+            ?: MovieDetailBelongsToCollection("", -1, "", ""),
         budget = budget ?: -1,
         genres = genres?.map { it.toGenre() } ?: emptyList(),
         homepage = homepage.orEmpty(),
@@ -45,8 +45,8 @@ fun MovieDetailDto.toMovieDetail(): MovieDetail {
     )
 }
 
-fun BelongsToCollectionDto.toBelongsToCollection(): BelongsToCollection {
-    return BelongsToCollection(
+fun MovieDetailBelongsToCollectionDto.toBelongsToCollection(): MovieDetailBelongsToCollection {
+    return MovieDetailBelongsToCollection(
         id = id ?: -1,
         name = name.orEmpty(),
         posterPath = posterPath.orEmpty(),
@@ -54,15 +54,15 @@ fun BelongsToCollectionDto.toBelongsToCollection(): BelongsToCollection {
     )
 }
 
-fun GenreDto.toGenre(): Genre {
-    return Genre(
+fun MovieDetailGenreDto.toGenre(): MovieDetailGenre {
+    return MovieDetailGenre(
         id = id ?: -1,
         name = name.orEmpty()
     )
 }
 
-fun ProductionCompanyDto.toProductionCompany(): ProductionCompany {
-    return ProductionCompany(
+fun MovieDetailProductionCompanyDto.toProductionCompany(): MovieDetailProductionCompany {
+    return MovieDetailProductionCompany(
         id = id ?: -1,
         logoPath = logoPath.orEmpty(),
         name = name.orEmpty(),
@@ -70,15 +70,15 @@ fun ProductionCompanyDto.toProductionCompany(): ProductionCompany {
     )
 }
 
-fun ProductionCountryDto.toProductionCountry(): ProductionCountry {
-    return ProductionCountry(
+fun MovieDetailProductionCountryDto.toProductionCountry(): MovieDetailProductionCountry {
+    return MovieDetailProductionCountry(
         iso31661 = iso31661.orEmpty(),
         name = name.orEmpty()
     )
 }
 
-fun SpokenLanguageDto.toSpokenLanguage(): SpokenLanguage {
-    return SpokenLanguage(
+fun MovieDetailSpokenLanguageDto.toSpokenLanguage(): MovieDetailSpokenLanguage {
+    return MovieDetailSpokenLanguage(
         englishName = englishName.orEmpty(),
         iso6391 = iso6391.orEmpty(),
         name = name.orEmpty()

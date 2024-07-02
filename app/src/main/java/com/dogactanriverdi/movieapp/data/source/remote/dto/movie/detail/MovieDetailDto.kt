@@ -8,11 +8,11 @@ data class MovieDetailDto(
     @SerializedName("backdrop_path")
     val backdropPath: String?,
     @SerializedName("belongs_to_collection")
-    val belongsToCollection: BelongsToCollectionDto?,
+    val belongsToCollection: MovieDetailBelongsToCollectionDto?,
     @SerializedName("budget")
     val budget: Int?,
     @SerializedName("genres")
-    val genres: List<GenreDto>?,
+    val genres: List<MovieDetailGenreDto>?,
     @SerializedName("homepage")
     val homepage: String?,
     @SerializedName("id")
@@ -32,9 +32,9 @@ data class MovieDetailDto(
     @SerializedName("poster_path")
     val posterPath: String?,
     @SerializedName("production_companies")
-    val productionCompanies: List<ProductionCompanyDto>?,
+    val productionCompanies: List<MovieDetailProductionCompanyDto>?,
     @SerializedName("production_countries")
-    val productionCountries: List<ProductionCountryDto>?,
+    val productionCountries: List<MovieDetailProductionCountryDto>?,
     @SerializedName("release_date")
     val releaseDate: String?,
     @SerializedName("revenue")
@@ -42,7 +42,7 @@ data class MovieDetailDto(
     @SerializedName("runtime")
     val runtime: Int?,
     @SerializedName("spoken_languages")
-    val spokenLanguages: List<SpokenLanguageDto>?,
+    val spokenLanguages: List<MovieDetailSpokenLanguageDto>?,
     @SerializedName("status")
     val status: String?,
     @SerializedName("tagline")

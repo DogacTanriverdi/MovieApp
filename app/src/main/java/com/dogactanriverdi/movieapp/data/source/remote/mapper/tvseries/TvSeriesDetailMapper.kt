@@ -1,24 +1,24 @@
 package com.dogactanriverdi.movieapp.data.source.remote.mapper.tvseries
 
-import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.CreatedByDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.GenreDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.LastEpisodeToAirDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.NetworkDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.NextEpisodeToAirDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.ProductionCompanyDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.ProductionCountryDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.SeasonDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.SpokenLanguageDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.TvSeriesDetailCreatedByDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.TvSeriesDetailGenreDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.TvSeriesDetailLastEpisodeToAirDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.TvSeriesDetailNetworkDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.TvSeriesDetailNextEpisodeToAirDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.TvSeriesDetailProductionCompanyDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.TvSeriesDetailProductionCountryDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.TvSeriesDetailSeasonDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.TvSeriesDetailSpokenLanguageDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.detail.TvSeriesDetailDto
-import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.CreatedBy
-import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.Genre
-import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.LastEpisodeToAir
-import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.Network
-import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.NextEpisodeToAir
-import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.ProductionCompany
-import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.ProductionCountry
-import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.Season
-import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.SpokenLanguage
+import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetailCreatedBy
+import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetailGenre
+import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetailLastEpisodeToAir
+import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetailNetwork
+import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetailNextEpisodeToAir
+import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetailProductionCompany
+import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetailProductionCountry
+import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetailSeason
+import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetailSpokenLanguage
 import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetail
 
 fun TvSeriesDetailDto.toTvSeriesDetail(): TvSeriesDetail {
@@ -37,7 +37,7 @@ fun TvSeriesDetailDto.toTvSeriesDetail(): TvSeriesDetail {
         lastEpisodeToAir = lastEpisodeToAir.toLastEpisodeToAir(),
         name = name.orEmpty(),
         networks = networks?.map { it.toNetwork() } ?: emptyList(),
-        nextEpisodeToAir = nextEpisodeToAir?.toNextEpisodeToAir() ?: NextEpisodeToAir(
+        nextEpisodeToAir = nextEpisodeToAir?.toNextEpisodeToAir() ?: TvSeriesDetailNextEpisodeToAir(
             "",
             -1,
             "",
@@ -72,8 +72,8 @@ fun TvSeriesDetailDto.toTvSeriesDetail(): TvSeriesDetail {
     )
 }
 
-fun CreatedByDto.toCreatedBy(): CreatedBy {
-    return CreatedBy(
+fun TvSeriesDetailCreatedByDto.toCreatedBy(): TvSeriesDetailCreatedBy {
+    return TvSeriesDetailCreatedBy(
         creditId = creditId.orEmpty(),
         gender = gender ?: -1,
         id = id ?: -1,
@@ -83,15 +83,15 @@ fun CreatedByDto.toCreatedBy(): CreatedBy {
     )
 }
 
-fun GenreDto.toGenre(): Genre {
-    return Genre(
+fun TvSeriesDetailGenreDto.toGenre(): TvSeriesDetailGenre {
+    return TvSeriesDetailGenre(
         id = id ?: -1,
         name = name.orEmpty()
     )
 }
 
-fun LastEpisodeToAirDto?.toLastEpisodeToAir(): LastEpisodeToAir {
-    return LastEpisodeToAir(
+fun TvSeriesDetailLastEpisodeToAirDto?.toLastEpisodeToAir(): TvSeriesDetailLastEpisodeToAir {
+    return TvSeriesDetailLastEpisodeToAir(
         airDate = this?.airDate.orEmpty(),
         episodeNumber = this?.episodeNumber ?: -1,
         id = this?.id ?: -1,
@@ -108,8 +108,8 @@ fun LastEpisodeToAirDto?.toLastEpisodeToAir(): LastEpisodeToAir {
     )
 }
 
-fun NetworkDto.toNetwork(): Network {
-    return Network(
+fun TvSeriesDetailNetworkDto.toNetwork(): TvSeriesDetailNetwork {
+    return TvSeriesDetailNetwork(
         name = name.orEmpty(),
         id = id ?: -1,
         logoPath = logoPath.orEmpty(),
@@ -117,8 +117,8 @@ fun NetworkDto.toNetwork(): Network {
     )
 }
 
-fun NextEpisodeToAirDto.toNextEpisodeToAir(): NextEpisodeToAir {
-    return NextEpisodeToAir(
+fun TvSeriesDetailNextEpisodeToAirDto.toNextEpisodeToAir(): TvSeriesDetailNextEpisodeToAir {
+    return TvSeriesDetailNextEpisodeToAir(
         airDate = airDate.orEmpty(),
         episodeNumber = episodeNumber ?: -1,
         id = id ?: -1,
@@ -135,8 +135,8 @@ fun NextEpisodeToAirDto.toNextEpisodeToAir(): NextEpisodeToAir {
     )
 }
 
-fun ProductionCompanyDto.toProductionCompany(): ProductionCompany {
-    return ProductionCompany(
+fun TvSeriesDetailProductionCompanyDto.toProductionCompany(): TvSeriesDetailProductionCompany {
+    return TvSeriesDetailProductionCompany(
         name = name.orEmpty(),
         id = id ?: -1,
         logoPath = logoPath.orEmpty(),
@@ -144,15 +144,15 @@ fun ProductionCompanyDto.toProductionCompany(): ProductionCompany {
     )
 }
 
-fun ProductionCountryDto.toProductionCountry(): ProductionCountry {
-    return ProductionCountry(
+fun TvSeriesDetailProductionCountryDto.toProductionCountry(): TvSeriesDetailProductionCountry {
+    return TvSeriesDetailProductionCountry(
         iso31661 = iso31661.orEmpty(),
         name = name.orEmpty()
     )
 }
 
-fun SeasonDto.toSeason(): Season {
-    return Season(
+fun TvSeriesDetailSeasonDto.toSeason(): TvSeriesDetailSeason {
+    return TvSeriesDetailSeason(
         airDate = airDate.orEmpty(),
         episodeCount = episodeCount ?: -1,
         id = id ?: -1,
@@ -164,8 +164,8 @@ fun SeasonDto.toSeason(): Season {
     )
 }
 
-fun SpokenLanguageDto.toSpokenLanguage(): SpokenLanguage {
-    return SpokenLanguage(
+fun TvSeriesDetailSpokenLanguageDto.toSpokenLanguage(): TvSeriesDetailSpokenLanguage {
+    return TvSeriesDetailSpokenLanguage(
         englishName = englishName.orEmpty(),
         iso6391 = iso6391.orEmpty(),
         name = name.orEmpty()

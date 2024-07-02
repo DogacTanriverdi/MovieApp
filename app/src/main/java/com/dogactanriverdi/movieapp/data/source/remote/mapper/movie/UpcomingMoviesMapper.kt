@@ -1,10 +1,10 @@
 package com.dogactanriverdi.movieapp.data.source.remote.mapper.movie
 
-import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.upcoming.DatesDto
-import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.upcoming.ResultDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.upcoming.UpcomingMoviesDatesDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.upcoming.UpcomingMoviesResultDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.upcoming.UpcomingMoviesDto
-import com.dogactanriverdi.movieapp.domain.model.movie.upcoming.Dates
-import com.dogactanriverdi.movieapp.domain.model.movie.upcoming.Result
+import com.dogactanriverdi.movieapp.domain.model.movie.upcoming.UpcomingMoviesDates
+import com.dogactanriverdi.movieapp.domain.model.movie.upcoming.UpcomingMoviesResult
 import com.dogactanriverdi.movieapp.domain.model.movie.upcoming.UpcomingMovies
 
 fun UpcomingMoviesDto.toUpcomingMovies(): UpcomingMovies {
@@ -13,12 +13,12 @@ fun UpcomingMoviesDto.toUpcomingMovies(): UpcomingMovies {
         results = results?.map { it.toResult() } ?: emptyList(),
         totalPages = totalPages ?: -1,
         totalResults = totalResults ?: -1,
-        dates = dates?.toDates() ?: Dates("", "")
+        dates = dates?.toDates() ?: UpcomingMoviesDates("", "")
     )
 }
 
-fun ResultDto.toResult(): Result {
-    return Result(
+fun UpcomingMoviesResultDto.toResult(): UpcomingMoviesResult {
+    return UpcomingMoviesResult(
         adult = adult ?: false,
         backdropPath = backdropPath.orEmpty(),
         genreIds = genreIds ?: emptyList(),
@@ -36,8 +36,8 @@ fun ResultDto.toResult(): Result {
     )
 }
 
-fun DatesDto.toDates(): Dates {
-    return Dates(
+fun UpcomingMoviesDatesDto.toDates(): UpcomingMoviesDates {
+    return UpcomingMoviesDates(
         maximum = maximum.orEmpty(),
         minimum = minimum.orEmpty()
     )
