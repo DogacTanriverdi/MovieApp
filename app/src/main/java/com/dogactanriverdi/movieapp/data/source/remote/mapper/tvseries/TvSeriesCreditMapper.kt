@@ -4,11 +4,11 @@ import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.credit.TvSer
 import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.credit.TvSeriesCreditsDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.tvseries.credit.TvSeriesCreditsCrewDto
 import com.dogactanriverdi.movieapp.domain.model.tvseries.credit.TvSeriesCreditsCast
-import com.dogactanriverdi.movieapp.domain.model.tvseries.credit.TvSeriesCreditsCredit
+import com.dogactanriverdi.movieapp.domain.model.tvseries.credit.TvSeriesCredits
 import com.dogactanriverdi.movieapp.domain.model.tvseries.credit.TvSeriesCreditsCrew
 
-fun TvSeriesCreditsDto.toCredit(): TvSeriesCreditsCredit {
-    return TvSeriesCreditsCredit(
+fun TvSeriesCreditsDto.toCredit(): TvSeriesCredits {
+    return TvSeriesCredits(
         cast = cast?.map { it.toCast() } ?: emptyList(),
         crew = crew?.map { it.toCrew() } ?: emptyList(),
         id = id ?: -1
