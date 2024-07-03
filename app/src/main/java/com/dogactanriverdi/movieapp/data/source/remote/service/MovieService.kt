@@ -2,7 +2,7 @@ package com.dogactanriverdi.movieapp.data.source.remote.service
 
 import com.dogactanriverdi.movieapp.BuildConfig
 import com.dogactanriverdi.movieapp.common.Constants
-import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.credit.MovieCreditsCreditDto
+import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.credit.MovieCreditsDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.MovieDetailDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.trending.TrendingMoviesDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.upcoming.UpcomingMoviesDto
@@ -38,5 +38,5 @@ interface MovieService {
         @Path(Constants.MOVIE_ID) movieId: Int,
         @Query(Constants.LANGUAGE) language: String,
         @Query(Constants.API_KEY) apiKey: String = BuildConfig.API_KEY
-    ): MovieCreditsCreditDto
+    ): MovieCreditsDto
 }
