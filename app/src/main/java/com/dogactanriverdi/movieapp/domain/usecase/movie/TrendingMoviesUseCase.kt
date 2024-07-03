@@ -20,7 +20,7 @@ class TrendingMoviesUseCase @Inject constructor(
                     if (totalPages == -1 || totalPages == 0) {
                         emit(Resource.Error(message = "Server error! Please try again later."))
                     } else {
-                        emit(Resource.Success(data = trendingMovies.toTrendingMovies()))
+                            emit(Resource.Success(data = trendingMovies.toTrendingMovies()))
                     }
                 }
             } catch (e: Exception) {

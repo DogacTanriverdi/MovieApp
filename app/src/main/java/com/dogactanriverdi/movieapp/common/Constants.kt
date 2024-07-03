@@ -4,6 +4,8 @@ object Constants {
 
     /* Base */
     const val BASE_URL = "https://api.themoviedb.org/3/"
+    const val BASE_IMAGE_URL_500 = "https://image.tmdb.org/t/p/w500/"
+    const val BASE_IMAGE_URL_ORIGINAL = "https://image.tmdb.org/t/p/original/"
 
     /* Endpoints */
     const val TRENDING_MOVIE_WEEK = "trending/movie/week"

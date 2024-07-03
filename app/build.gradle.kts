@@ -31,6 +31,7 @@ android {
     }
 
     buildFeatures {
+        viewBinding = true
         buildConfig = true
     }
 
@@ -43,11 +44,11 @@ android {
                 "proguard-rules.pro"
             )
 
-            buildConfigField("String", "API_KEY", "\"apiKey\"")
+            buildConfigField("String", "API_KEY", "\"$apiKey\"")
         }
 
         debug {
-            buildConfigField("String", "API_KEY", "\"apiKey\"")
+            buildConfigField("String", "API_KEY", "\"$apiKey\"")
         }
     }
     compileOptions {
@@ -104,6 +105,9 @@ dependencies {
 
     // Circle Indicator
     implementation(libs.circleindicator)
+
+    debugImplementation(libs.library)
+    releaseImplementation(libs.library.no.op)
 
     // ViewPager2
     implementation(libs.viewpager)
