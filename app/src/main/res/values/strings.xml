@@ -7,4 +7,10 @@
     <string name="tv_series_poster">Tv series poster</string>
     <string name="movie_poster">Movie poster</string>
     <string name="home">Home</string>
+    <string name="overview">Overview</string>
+    <string name="back_button">Back button</string>
+    <string name="add_to_favorite_button">Add to favorite button</string>
+    <string name="vote">%1$s (%2$s)</string>
+    <string name="plus_18">18+</string>
+    <string name="for_everyone">For everyone</string>
 </resources>

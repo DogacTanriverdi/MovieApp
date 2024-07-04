@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:id="@+id/rootLayout"
+    android:layout_height="match_parent"
+    tools:context=".presentation.moviedetail.MovieDetailFragment">
+
+    <com.facebook.shimmer.ShimmerFrameLayout
+        android:id="@+id/shimmer"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:visibility="gone"
+        app:shimmer_duration="800">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <include layout="@layout/shimmer_movie_detail" />
+
+        </LinearLayout>
+
+    </com.facebook.shimmer.ShimmerFrameLayout>
+
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/nestedScrollView"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
+
+            <FrameLayout
+                android:layout_width="match_parent"
+                android:layout_height="600dp">
+
+                <ImageView
+                    android:id="@+id/ivMoviePoster"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:contentDescription="@string/movie_poster"
+                    android:scaleType="centerCrop"
+                    tools:src="@mipmap/ic_launcher"
+                    />
+
+                <ImageButton
+                    android:id="@+id/ibBack"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_marginStart="20dp"
+                    android:layout_marginTop="40dp"
+                    android:background="@drawable/bg_image_btn"
+                    android:contentDescription="@string/back_button"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_back"
+                    app:tint="@color/black" />
+
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvMovieName"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_margin="10dp"
+                    android:layout_weight="100"
+                    android:textColor="@color/text_color"
+                    android:textSize="25sp"
+                    android:textStyle="bold"
+                    tools:text="Movie Name" />
+
+                <ImageButton
+                    android:id="@+id/ibFavorite"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/transparent"
+                    android:contentDescription="@string/add_to_favorite_button"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_favorite_border" />
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="20dp"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/tvVote"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_gravity="center"
+                    android:layout_weight="3"
+                    android:drawablePadding="5dp"
+                    app:drawableStartCompat="@drawable/ic_star"
+                    tools:text="7.7 (1630)" />
+
+                <TextView
+                    android:id="@+id/tvReleaseDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_weight="3"
+                    tools:text="2024-05-22" />
+
+                <TextView
+                    android:id="@+id/tvAdult"
+                    android:layout_width="wrap_content"
+                    android:layout_height="20dp"
+                    android:layout_weight="3"
+                    tools:text="For everyone" />
+
+            </LinearLayout>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvGenres"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+            <TextView
+                android:id="@+id/tvOverview"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/overview"
+                android:textColor="@color/text_color"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvOverviewDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="30dp"
+                tools:text="Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince profesörü Richard McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden biri olan 'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir kaynağa ulaşmıştır. Lorm Ipsum, Çiçero tarafından M.Ö. 45 tarihinde kaleme alınan                                       (İyi ve Kötünün Uç Sınırları) eserinin 1.10.32 ve 1.10.33 sayılı bölümlerinden gelmektedir. Bu kitap, ahlak kuramı üzerine bir tezdir ve Rönesans döneminde çok popüler olmuştur. Lorem Ipsum pasajının ilk satırı olan 1.10.32 sayılı bölümdeki bir satırdan gelmektedir." />
+
+        </LinearLayout>
+
+    </androidx.core.widget.NestedScrollView>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

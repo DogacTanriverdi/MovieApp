@@ -5,6 +5,7 @@ import android.view.View
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.RecyclerView
 import androidx.viewpager2.widget.CompositePageTransformer
 import com.dogactanriverdi.movieapp.R
@@ -35,10 +36,10 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
 
     private val viewModel: HomeViewModel by viewModels()
 
-    private val trendingMoviesAdapter by lazy { TrendingMoviesAdapter { ::onTrendingMovieClicked } }
-    private val trendingTvSeriesAdapter by lazy { TrendingTvSeriesAdapter { ::onTrendingTvSeriesClicked } }
-    private val upcomingMoviesAdapter by lazy { UpcomingMoviesAdapter { ::onUpcomingMovieClicked } }
-    private val viewPagerAdapter by lazy { ViewPagerAdapter {} }
+    private val trendingMoviesAdapter by lazy { TrendingMoviesAdapter(::onTrendingMovieClicked) }
+    private val trendingTvSeriesAdapter by lazy { TrendingTvSeriesAdapter(::onTrendingTvSeriesClicked ) }
+    private val upcomingMoviesAdapter by lazy { UpcomingMoviesAdapter(::onUpcomingMovieClicked) }
+    private val viewPagerAdapter by lazy { ViewPagerAdapter(::onTrendingBannerMovieClicked) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -95,7 +96,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         shimmerTrendingNow.stopShimmer()
                         shimmerTrendingNow.gone()
                         tvErrorTrendingNow.gone()
-                        rvTrendingMovies.visible()      
+                        rvTrendingMovies.visible()
                         trendingMoviesAdapter.recyclerListDiffer.submitList(response.results)
                         viewPagerAdapter.recyclerListDiffer.submitList(response.results)
                         val compositePageTransformer = CompositePageTransformer()
@@ -186,7 +187,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun onTrendingMovieClicked(movie: TrendingMoviesResult) {
-        // Navigate to detail
+        val action = HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(movie.id)
+        findNavController().navigate(action)
     }
 
     private fun onTrendingTvSeriesClicked(tvSeries: TrendingTvSeriesResult) {
@@ -194,6 +196,12 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun onUpcomingMovieClicked(movie: UpcomingMoviesResult) {
-        // Navigate to detail
+        val action = HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(movie.id)
+        findNavController().navigate(action)
+    }
+
+    private fun onTrendingBannerMovieClicked(movie: TrendingMoviesResult) {
+        val action = HomeFragmentDirections.actionHomeFragmentToMovieDetailFragment(movie.id)
+        findNavController().navigate(action)
     }
 }
