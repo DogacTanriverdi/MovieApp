@@ -13,4 +13,6 @@
     <string name="vote">%1$s (%2$s)</string>
     <string name="plus_18">18+</string>
     <string name="for_everyone">For everyone</string>
+    <string name="in_production">In production</string>
+    <string name="end">End</string>
 </resources>

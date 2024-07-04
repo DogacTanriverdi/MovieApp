@@ -37,16 +37,16 @@ class TvSeriesDetailViewModel @Inject constructor(
 
                     is Resource.Success -> {
                         _tvSeriesDetailState.value = tvSeriesDetailState.value.copy(
-                            isLoading = true,
-                            tvSeriesDetail = null,
+                            isLoading = false,
+                            tvSeriesDetail = tvSeriesDetail.data,
                             error = ""
                         )
                     }
 
                     is Resource.Error -> {
                         _tvSeriesDetailState.value = tvSeriesDetailState.value.copy(
-                            isLoading = true,
-                            tvSeriesDetail = tvSeriesDetail.data,
+                            isLoading = false,
+                            tvSeriesDetail = null,
                             error = tvSeriesDetail.message ?: "Unknown error!"
                         )
                     }

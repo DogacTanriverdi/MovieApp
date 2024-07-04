@@ -37,7 +37,7 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     private val viewModel: HomeViewModel by viewModels()
 
     private val trendingMoviesAdapter by lazy { TrendingMoviesAdapter(::onTrendingMovieClicked) }
-    private val trendingTvSeriesAdapter by lazy { TrendingTvSeriesAdapter(::onTrendingTvSeriesClicked ) }
+    private val trendingTvSeriesAdapter by lazy { TrendingTvSeriesAdapter(::onTrendingTvSeriesClicked) }
     private val upcomingMoviesAdapter by lazy { UpcomingMoviesAdapter(::onUpcomingMovieClicked) }
     private val viewPagerAdapter by lazy { ViewPagerAdapter(::onTrendingBannerMovieClicked) }
 
@@ -192,7 +192,8 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
     }
 
     private fun onTrendingTvSeriesClicked(tvSeries: TrendingTvSeriesResult) {
-        // Navigate to detail
+        val action = HomeFragmentDirections.actionHomeFragmentToTvSeriesDetailFragment(tvSeries.id)
+        findNavController().navigate(action)
     }
 
     private fun onUpcomingMovieClicked(movie: UpcomingMoviesResult) {
