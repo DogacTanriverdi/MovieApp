@@ -15,7 +15,9 @@ import com.dogactanriverdi.movieapp.common.loadImage
 import com.dogactanriverdi.movieapp.common.viewBinding
 import com.dogactanriverdi.movieapp.common.visible
 import com.dogactanriverdi.movieapp.databinding.FragmentMovieDetailBinding
+import com.dogactanriverdi.movieapp.presentation.moviedetail.adapter.MovieDetailCastAdapter
 import com.dogactanriverdi.movieapp.presentation.moviedetail.adapter.MovieDetailGenreAdapter
+import com.dogactanriverdi.movieapp.presentation.moviedetail.state.MovieCreditsState
 import com.dogactanriverdi.movieapp.presentation.moviedetail.state.MovieDetailState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.StateFlow
@@ -32,6 +34,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private val binding by viewBinding(FragmentMovieDetailBinding::bind)
 
     private val movieDetailGenreAdapter by lazy { MovieDetailGenreAdapter {} }
+    private val movieDetailCastAdapter by lazy { MovieDetailCastAdapter() }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -40,14 +43,17 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
             with(viewModel) {
 
                 getMovieDetail(args.movieId, Locale.getDefault().language)
+                getMovieCredits(args.movieId, Locale.getDefault().language)
 
                 ibBack.setOnClickListener {
                     findNavController().navigateUp()
                 }
 
                 observeMovieDetailState(movieDetailState)
+                observeMovieCreditsState(movieCreditsState)
 
                 rvGenres.adapter = movieDetailGenreAdapter
+                rvCast.adapter = movieDetailCastAdapter
             }
         }
     }
@@ -90,6 +96,27 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                             )
                         tvOverviewDescription.text = response.overview
                         movieDetailGenreAdapter.recyclerListDiffer.submitList(response.genres)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun observeMovieCreditsState(state: StateFlow<MovieCreditsState>) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            state.collect { state ->
+                with(binding) {
+
+                    if (state.isLoading) {
+
+                    }
+
+                    if (state.error.isNotBlank()) {
+
+                    }
+
+                    state.movieCredits?.let { response ->
+                        movieDetailCastAdapter.recyclerListDiffer.submitList(response.cast)
                     }
                 }
             }

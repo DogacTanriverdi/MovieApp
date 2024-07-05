@@ -2,8 +2,8 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
     android:id="@+id/rootLayout"
+    android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".presentation.moviedetail.MovieDetailFragment">
 
@@ -45,8 +45,7 @@
                     android:layout_height="match_parent"
                     android:contentDescription="@string/movie_poster"
                     android:scaleType="centerCrop"
-                    tools:src="@mipmap/ic_launcher"
-                    />
+                    tools:src="@mipmap/ic_launcher" />
 
                 <ImageButton
                     android:id="@+id/ibBack"
@@ -59,7 +58,7 @@
                     android:padding="5dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_back"
-                    app:tint="@color/black" />
+                    app:tint="@color/white" />
 
             </FrameLayout>
 
@@ -147,9 +146,27 @@
                 android:id="@+id/tvOverviewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
                 android:layout_marginHorizontal="10dp"
-                android:layout_marginBottom="30dp"
                 tools:text="Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince profesörü Richard McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden biri olan 'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir kaynağa ulaşmıştır. Lorm Ipsum, Çiçero tarafından M.Ö. 45 tarihinde kaleme alınan                                       (İyi ve Kötünün Uç Sınırları) eserinin 1.10.32 ve 1.10.33 sayılı bölümlerinden gelmektedir. Bu kitap, ahlak kuramı üzerine bir tezdir ve Rönesans döneminde çok popüler olmuştur. Lorem Ipsum pasajının ilk satırı olan 1.10.32 sayılı bölümdeki bir satırdan gelmektedir." />
+
+            <TextView
+                android:id="@+id/tvCasts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/casts"
+                android:textColor="@color/text_color"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCast"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         </LinearLayout>
 

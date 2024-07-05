@@ -50,16 +50,17 @@
 
                 <ImageButton
                     android:id="@+id/ibBack"
-                    android:layout_width="40dp"
-                    android:layout_height="40dp"
+                    android:layout_width="43dp"
+                    android:layout_height="43dp"
                     android:layout_marginStart="20dp"
+                    android:gravity="center"
                     android:layout_marginTop="40dp"
                     android:background="@drawable/bg_image_btn"
                     android:contentDescription="@string/back_button"
-                    android:padding="5dp"
                     android:scaleType="centerCrop"
+                    android:padding="10dp"
                     android:src="@drawable/ic_back"
-                    app:tint="@color/black" />
+                    app:tint="@color/white" />
 
             </FrameLayout>
 
@@ -129,8 +130,7 @@
                 android:id="@+id/tvInProduction"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                tools:text="End"
-                android:layout_marginEnd="10dp"
+                tools:text="In Production"
                 android:layout_gravity="center"
                 />
 
@@ -159,6 +159,25 @@
                 android:layout_marginHorizontal="10dp"
                 android:layout_marginBottom="30dp"
                 tools:text="Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince profesörü Richard McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden biri olan 'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir kaynağa ulaşmıştır. Lorm Ipsum, Çiçero tarafından M.Ö. 45 tarihinde kaleme alınan                                       (İyi ve Kötünün Uç Sınırları) eserinin 1.10.32 ve 1.10.33 sayılı bölümlerinden gelmektedir. Bu kitap, ahlak kuramı üzerine bir tezdir ve Rönesans döneminde çok popüler olmuştur. Lorem Ipsum pasajının ilk satırı olan 1.10.32 sayılı bölümdeki bir satırdan gelmektedir." />
+
+            <TextView
+                android:id="@+id/tvCasts"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="@string/casts"
+                android:textColor="@color/text_color"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvCast"
+                android:layout_width="match_parent"
+                android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="30dp"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
         </LinearLayout>
 

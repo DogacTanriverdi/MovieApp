@@ -16,6 +16,7 @@ import com.dogactanriverdi.movieapp.common.viewBinding
 import com.dogactanriverdi.movieapp.common.visible
 import com.dogactanriverdi.movieapp.databinding.FragmentTvSeriesDetailBinding
 import com.dogactanriverdi.movieapp.presentation.tvseriesdetail.adapter.TvSeriesDetailGenreAdapter
+import com.dogactanriverdi.movieapp.presentation.tvseriesdetail.state.TvSeriesCreditsState
 import com.dogactanriverdi.movieapp.presentation.tvseriesdetail.state.TvSeriesDetailState
 import dagger.hilt.android.AndroidEntryPoint
 import kotlinx.coroutines.flow.StateFlow
@@ -30,8 +31,9 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
     private val viewModel: TvSeriesDetailViewModel by viewModels()
 
     private val tvSeriesDetailGenreAdapter by lazy { TvSeriesDetailGenreAdapter {} }
+    private val tvSeriesDetailCastAdapter by lazy { TvSeriesDetailCastAdapter() }
 
-    private val args : TvSeriesDetailFragmentArgs by navArgs()
+    private val args: TvSeriesDetailFragmentArgs by navArgs()
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -44,10 +46,13 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
                 }
 
                 getTvSeriesDetail(args.seriesId, Locale.getDefault().language)
+                getTvSeriesCredits(args.seriesId, Locale.getDefault().language)
 
                 observeTvSeriesDetailState(tvSeriesDetailState)
+                observeTvSeriesCreditsState(tvSeriesCreditsState)
 
                 rvGenres.adapter = tvSeriesDetailGenreAdapter
+                rvCast.adapter = tvSeriesDetailCastAdapter
             }
         }
     }
@@ -87,12 +92,32 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
                             getString(R.string.in_production) else tvInProduction.text =
                             getString(R.string.end)
                         if (response.adult) tvAdult.text =
-                            getString(R.string.plus_18) else tvAdult.text =
-                            getString(
-                                R.string.for_everyone
-                            )
+                            getString(R.string.for_everyone)
+                        else tvAdult.text =
+                            getString(R.string.plus_18)
                         tvOverviewDescription.text = response.overview
                         tvSeriesDetailGenreAdapter.recyclerListDiffer.submitList(response.genres)
+                    }
+                }
+            }
+        }
+    }
+
+    private fun observeTvSeriesCreditsState(state: StateFlow<TvSeriesCreditsState>) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            state.collect { state ->
+                with(binding) {
+
+                    if (state.isLoading) {
+
+                    }
+
+                    if (state.error.isNotBlank()) {
+
+                    }
+
+                    state.tvSeriesCredits?.let { response ->
+                        tvSeriesDetailCastAdapter.recyclerListDiffer.submitList(response.cast)
                     }
                 }
             }

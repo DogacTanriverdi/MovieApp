@@ -15,4 +15,6 @@
     <string name="for_everyone">For everyone</string>
     <string name="in_production">In production</string>
     <string name="end">End</string>
+    <string name="cast_profile_picture">Cast profile picture</string>
+    <string name="casts">Casts</string>
 </resources>
