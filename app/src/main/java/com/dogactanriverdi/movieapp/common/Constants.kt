@@ -17,10 +17,15 @@ object Constants {
     const val TV_SERIES_DETAIL = "tv/{series_id}"
     const val TV_SERIES_CREDITS = "tv/{series_id}/credits"
 
+    const val PERSON_DETAIL = "person/{person_id}"
+    const val PERSON_MOVIE_CREDITS = "person/{person_id}/movie_credits"
+    const val PERSON_TV_SERIES_CREDITS = "person/{person_id}/tv_credits"
+
     /* Queries */
     const val API_KEY = "api_key"
     const val PAGE = "page"
     const val LANGUAGE = "language"
     const val MOVIE_ID = "movie_id"
     const val TV_SERIES_ID = "series_id"
+    const val PERSON_ID = "person_id"
 }

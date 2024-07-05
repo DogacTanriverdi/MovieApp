@@ -1,12 +1,17 @@
 package com.dogactanriverdi.movieapp.data.di
 
 import com.dogactanriverdi.movieapp.domain.repository.MovieRepository
+import com.dogactanriverdi.movieapp.domain.repository.PersonRepository
 import com.dogactanriverdi.movieapp.domain.repository.TvSeriesRepository
 import com.dogactanriverdi.movieapp.domain.usecase.movie.MovieCreditsUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.movie.MovieDetailUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.movie.MovieUseCases
 import com.dogactanriverdi.movieapp.domain.usecase.movie.TrendingMoviesUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.movie.UpcomingMoviesUseCase
+import com.dogactanriverdi.movieapp.domain.usecase.person.PersonDetailUseCase
+import com.dogactanriverdi.movieapp.domain.usecase.person.PersonMovieCreditsUseCase
+import com.dogactanriverdi.movieapp.domain.usecase.person.PersonTvSeriesCreditsUseCase
+import com.dogactanriverdi.movieapp.domain.usecase.person.PersonUseCases
 import com.dogactanriverdi.movieapp.domain.usecase.tvseries.TrendingTvSeriesUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.tvseries.TvSeriesCreditsUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.tvseries.TvSeriesDetailUseCase
@@ -43,6 +48,18 @@ object UseCaseModule {
             trendingTvSeries = TrendingTvSeriesUseCase(tvSeriesRepository),
             tvSeriesDetail = TvSeriesDetailUseCase(tvSeriesRepository),
             tvSeriesCredits = TvSeriesCreditsUseCase(tvSeriesRepository)
+        )
+    }
+
+    @Singleton
+    @Provides
+    fun providePersonUseCases(
+        personRepository: PersonRepository
+    ): PersonUseCases {
+        return PersonUseCases(
+            personDetail = PersonDetailUseCase(personRepository),
+            personMovieCredits = PersonMovieCreditsUseCase(personRepository),
+            personTvSeriesCredits = PersonTvSeriesCreditsUseCase(personRepository)
         )
     }
 }

@@ -15,6 +15,8 @@ import com.dogactanriverdi.movieapp.common.loadImage
 import com.dogactanriverdi.movieapp.common.viewBinding
 import com.dogactanriverdi.movieapp.common.visible
 import com.dogactanriverdi.movieapp.databinding.FragmentTvSeriesDetailBinding
+import com.dogactanriverdi.movieapp.domain.model.tvseries.credit.TvSeriesCreditsCast
+import com.dogactanriverdi.movieapp.presentation.tvseriesdetail.adapter.TvSeriesDetailCastAdapter
 import com.dogactanriverdi.movieapp.presentation.tvseriesdetail.adapter.TvSeriesDetailGenreAdapter
 import com.dogactanriverdi.movieapp.presentation.tvseriesdetail.state.TvSeriesCreditsState
 import com.dogactanriverdi.movieapp.presentation.tvseriesdetail.state.TvSeriesDetailState
@@ -31,7 +33,7 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
     private val viewModel: TvSeriesDetailViewModel by viewModels()
 
     private val tvSeriesDetailGenreAdapter by lazy { TvSeriesDetailGenreAdapter {} }
-    private val tvSeriesDetailCastAdapter by lazy { TvSeriesDetailCastAdapter() }
+    private val tvSeriesDetailCastAdapter by lazy { TvSeriesDetailCastAdapter(::onCastClicked) }
 
     private val args: TvSeriesDetailFragmentArgs by navArgs()
 
@@ -122,5 +124,11 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
                 }
             }
         }
+    }
+
+    private fun onCastClicked(cast: TvSeriesCreditsCast) {
+        val action =
+            TvSeriesDetailFragmentDirections.actionTvSeriesDetailFragmentToCastDetailFragment(cast.id)
+        findNavController().navigate(action)
     }
 }

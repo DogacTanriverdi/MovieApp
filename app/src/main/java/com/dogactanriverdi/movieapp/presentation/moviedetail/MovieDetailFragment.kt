@@ -15,6 +15,8 @@ import com.dogactanriverdi.movieapp.common.loadImage
 import com.dogactanriverdi.movieapp.common.viewBinding
 import com.dogactanriverdi.movieapp.common.visible
 import com.dogactanriverdi.movieapp.databinding.FragmentMovieDetailBinding
+import com.dogactanriverdi.movieapp.domain.model.movie.credit.MovieCreditsCast
+import com.dogactanriverdi.movieapp.domain.model.tvseries.credit.TvSeriesCreditsCast
 import com.dogactanriverdi.movieapp.presentation.moviedetail.adapter.MovieDetailCastAdapter
 import com.dogactanriverdi.movieapp.presentation.moviedetail.adapter.MovieDetailGenreAdapter
 import com.dogactanriverdi.movieapp.presentation.moviedetail.state.MovieCreditsState
@@ -34,7 +36,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private val binding by viewBinding(FragmentMovieDetailBinding::bind)
 
     private val movieDetailGenreAdapter by lazy { MovieDetailGenreAdapter {} }
-    private val movieDetailCastAdapter by lazy { MovieDetailCastAdapter() }
+    private val movieDetailCastAdapter by lazy { MovieDetailCastAdapter(::onCastClicked) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
@@ -121,5 +123,11 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                 }
             }
         }
+    }
+
+    private fun onCastClicked(cast: MovieCreditsCast) {
+        val action =
+            MovieDetailFragmentDirections.actionMovieDetailFragmentToCastDetailFragment(cast.id)
+        findNavController().navigate(action)
     }
 }

@@ -10,8 +10,11 @@ import com.dogactanriverdi.movieapp.common.loadImage
 import com.dogactanriverdi.movieapp.databinding.DetailCastItemBinding
 import com.dogactanriverdi.movieapp.domain.model.movie.credit.MovieCreditsCast
 
-class MovieDetailCastAdapter : RecyclerView.Adapter<MovieDetailCastAdapter.MovieDetailCastViewHolder>() {
-    class MovieDetailCastViewHolder(
+class MovieDetailCastAdapter(
+    private val onClick: (MovieCreditsCast) -> Unit
+) : RecyclerView.Adapter<MovieDetailCastAdapter.MovieDetailCastViewHolder>() {
+
+    inner class MovieDetailCastViewHolder(
         private val binding: DetailCastItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -20,6 +23,11 @@ class MovieDetailCastAdapter : RecyclerView.Adapter<MovieDetailCastAdapter.Movie
                 ivCastProfilePicture.loadImage(BASE_IMAGE_URL_500 + cast.profilePath)
                 tvActorName.text = cast.name
                 tvCharacterName.text = cast.character
+                cast.id
+
+                root.setOnClickListener {
+                    onClick(cast)
+                }
             }
         }
     }

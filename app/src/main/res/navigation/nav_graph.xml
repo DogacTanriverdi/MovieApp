@@ -25,6 +25,9 @@
         <argument
             android:name="movie_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_movieDetailFragment_to_castDetailFragment"
+            app:destination="@id/castDetailFragment" />
     </fragment>
     <fragment
         android:id="@+id/tvSeriesDetailFragment"
@@ -34,5 +37,23 @@
         <argument
             android:name="series_id"
             app:argType="integer" />
+        <action
+            android:id="@+id/action_tvSeriesDetailFragment_to_castDetailFragment"
+            app:destination="@id/castDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/castDetailFragment"
+        android:name="com.dogactanriverdi.movieapp.presentation.castdetail.CastDetailFragment"
+        android:label="fragment_cast_detail"
+        tools:layout="@layout/fragment_cast_detail" >
+        <argument
+            android:name="person_id"
+            app:argType="integer" />
+        <action
+            android:id="@+id/action_castDetailFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_castDetailFragment_to_tvSeriesDetailFragment"
+            app:destination="@id/tvSeriesDetailFragment" />
     </fragment>
 </navigation>

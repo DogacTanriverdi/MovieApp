@@ -7,6 +7,7 @@ import com.dogactanriverdi.movieapp.BuildConfig
 import com.dogactanriverdi.movieapp.common.Constants.BASE_URL
 import com.dogactanriverdi.movieapp.common.NetworkInterceptor
 import com.dogactanriverdi.movieapp.data.source.remote.service.MovieService
+import com.dogactanriverdi.movieapp.data.source.remote.service.PersonService
 import com.dogactanriverdi.movieapp.data.source.remote.service.TvSeriesService
 import dagger.Module
 import dagger.Provides
@@ -71,5 +72,11 @@ object NetworkModule {
     @Provides
     fun provideTvSeriesService(retrofit: Retrofit): TvSeriesService {
         return retrofit.create<TvSeriesService>()
+    }
+
+    @Singleton
+    @Provides
+    fun providePersonService(retrofit: Retrofit): PersonService {
+        return retrofit.create<PersonService>()
     }
 }

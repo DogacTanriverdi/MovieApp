@@ -1,6 +1,6 @@
 package com.dogactanriverdi.movieapp.domain.model.movie.credit
 
-data class MovieCreditsCast(
+data class  MovieCreditsCast(
     val adult: Boolean,
     val castId: Int,
     val character: String,

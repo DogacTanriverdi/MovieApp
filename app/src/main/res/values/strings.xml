@@ -17,4 +17,9 @@
     <string name="end">End</string>
     <string name="cast_profile_picture">Cast profile picture</string>
     <string name="casts">Casts</string>
+    <string name="movies">Movies</string>
+    <string name="read_more">Read more...</string>
+    <string name="actor_image">Actor image</string>
+    <string name="tv_series">Tv Series</string>
+    <string name="read_less">Read less</string>
 </resources>

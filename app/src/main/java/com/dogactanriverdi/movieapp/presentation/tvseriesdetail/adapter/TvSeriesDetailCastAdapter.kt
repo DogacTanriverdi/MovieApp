@@ -1,4 +1,4 @@
-package com.dogactanriverdi.movieapp.presentation.tvseriesdetail
+package com.dogactanriverdi.movieapp.presentation.tvseriesdetail.adapter
 
 import android.view.LayoutInflater
 import android.view.ViewGroup
@@ -8,10 +8,14 @@ import androidx.recyclerview.widget.RecyclerView
 import com.dogactanriverdi.movieapp.common.Constants.BASE_IMAGE_URL_500
 import com.dogactanriverdi.movieapp.common.loadImage
 import com.dogactanriverdi.movieapp.databinding.DetailCastItemBinding
+import com.dogactanriverdi.movieapp.domain.model.movie.credit.MovieCreditsCast
 import com.dogactanriverdi.movieapp.domain.model.tvseries.credit.TvSeriesCreditsCast
 
-class TvSeriesDetailCastAdapter : RecyclerView.Adapter<TvSeriesDetailCastAdapter.MovieDetailCastViewHolder>() {
-    class MovieDetailCastViewHolder(
+class TvSeriesDetailCastAdapter(
+    private val onClick: (TvSeriesCreditsCast) -> Unit
+) : RecyclerView.Adapter<TvSeriesDetailCastAdapter.MovieDetailCastViewHolder>() {
+
+    inner class MovieDetailCastViewHolder(
         private val binding: DetailCastItemBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
@@ -20,6 +24,10 @@ class TvSeriesDetailCastAdapter : RecyclerView.Adapter<TvSeriesDetailCastAdapter
                 ivCastProfilePicture.loadImage(BASE_IMAGE_URL_500 + cast.profilePath)
                 tvActorName.text = cast.name
                 tvCharacterName.text = cast.character
+
+                root.setOnClickListener {
+                    onClick(cast)
+                }
             }
         }
     }
