@@ -5,7 +5,7 @@ import com.dogactanriverdi.movieapp.BuildConfig
 import okhttp3.Interceptor
 import okhttp3.Response
 
-class NetworkInterceptor(private val context: Context) : Interceptor {
+class NetworkInterceptor() : Interceptor {
 
     override fun intercept(chain: Interceptor.Chain): Response {
         val builder = chain.request().newBuilder()

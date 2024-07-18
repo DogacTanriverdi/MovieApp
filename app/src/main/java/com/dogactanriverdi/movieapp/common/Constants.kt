@@ -21,6 +21,8 @@ object Constants {
     const val PERSON_MOVIE_CREDITS = "person/{person_id}/movie_credits"
     const val PERSON_TV_SERIES_CREDITS = "person/{person_id}/tv_credits"
 
+    const val SEARCH_MULTI = "search/multi"
+
     /* Queries */
     const val API_KEY = "api_key"
     const val PAGE = "page"
@@ -28,4 +30,6 @@ object Constants {
     const val MOVIE_ID = "movie_id"
     const val TV_SERIES_ID = "series_id"
     const val PERSON_ID = "person_id"
+    const val QUERY = "query"
+    const val INCLUDE_ADULT = "include_adult"
 }

@@ -8,7 +8,10 @@ import com.dogactanriverdi.movieapp.common.Constants.BASE_URL
 import com.dogactanriverdi.movieapp.common.NetworkInterceptor
 import com.dogactanriverdi.movieapp.data.source.remote.service.MovieService
 import com.dogactanriverdi.movieapp.data.source.remote.service.PersonService
+import com.dogactanriverdi.movieapp.data.source.remote.service.SearchService
 import com.dogactanriverdi.movieapp.data.source.remote.service.TvSeriesService
+import com.google.gson.Gson
+import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -27,9 +30,7 @@ object NetworkModule {
 
     @Singleton
     @Provides
-    fun provideNetworkInterceptor(
-        @ApplicationContext context: Context
-    ) = NetworkInterceptor(context)
+    fun provideNetworkInterceptor() = NetworkInterceptor()
 
     @Singleton
     @Provides
@@ -39,7 +40,7 @@ object NetworkModule {
         return Retrofit.Builder()
             .baseUrl(BASE_URL)
             .client(okHttpClient)
-            .addConverterFactory(GsonConverterFactory.create())
+            .addConverterFactory(GsonConverterFactory.create(GsonBuilder().setLenient().create()))
             .build()
     }
 
@@ -78,5 +79,11 @@ object NetworkModule {
     @Provides
     fun providePersonService(retrofit: Retrofit): PersonService {
         return retrofit.create<PersonService>()
+    }
+
+    @Singleton
+    @Provides
+    fun provideSearchService(retrofit: Retrofit): SearchService {
+        return retrofit.create<SearchService>()
     }
 }

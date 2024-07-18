@@ -47,6 +47,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
         with(binding) {
             with(viewModel) {
 
+                ibSearch.setOnClickListener {
+                    val action = HomeFragmentDirections.actionHomeFragmentToSearchFragment()
+                    findNavController().navigate(action)
+                }
+
                 getTrendingMovies(1, Locale.getDefault().language)
                 getTrendingTvSeries(1, Locale.getDefault().language)
                 getUpcomingMovies(1, Locale.getDefault().language)

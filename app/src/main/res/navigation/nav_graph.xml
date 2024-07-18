@@ -16,6 +16,9 @@
         <action
             android:id="@+id/action_homeFragment_to_tvSeriesDetailFragment"
             app:destination="@id/tvSeriesDetailFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_searchFragment"
+            app:destination="@id/searchFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -55,5 +58,20 @@
         <action
             android:id="@+id/action_castDetailFragment_to_tvSeriesDetailFragment"
             app:destination="@id/tvSeriesDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/searchFragment"
+        android:name="com.dogactanriverdi.movieapp.presentation.search.SearchFragment"
+        android:label="fragment_search"
+        tools:layout="@layout/fragment_search" >
+        <action
+            android:id="@+id/action_searchFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_tvSeriesDetailFragment"
+            app:destination="@id/tvSeriesDetailFragment" />
+        <action
+            android:id="@+id/action_searchFragment_to_castDetailFragment"
+            app:destination="@id/castDetailFragment" />
     </fragment>
 </navigation>

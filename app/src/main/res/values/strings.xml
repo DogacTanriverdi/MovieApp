@@ -22,4 +22,6 @@
     <string name="actor_image">Actor image</string>
     <string name="tv_series">Tv Series</string>
     <string name="read_less">Read less</string>
+    <string name="search">Search...</string>
+    <string name="poster">Poster</string>
 </resources>

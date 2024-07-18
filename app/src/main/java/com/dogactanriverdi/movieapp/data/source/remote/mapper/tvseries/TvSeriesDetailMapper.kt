@@ -37,21 +37,7 @@ fun TvSeriesDetailDto.toTvSeriesDetail(): TvSeriesDetail {
         lastEpisodeToAir = lastEpisodeToAir.toLastEpisodeToAir(),
         name = name.orEmpty(),
         networks = networks?.map { it.toNetwork() } ?: emptyList(),
-        nextEpisodeToAir = nextEpisodeToAir?.toNextEpisodeToAir() ?: TvSeriesDetailNextEpisodeToAir(
-            "",
-            -1,
-            "",
-            -1,
-            "",
-            "",
-            "",
-            -1,
-            -1,
-            -1,
-            "",
-            -1.0,
-            -1
-        ),
+        nextEpisodeToAir = nextEpisodeToAir.toNextEpisodeToAir(),
         numberOfEpisodes = numberOfEpisodes ?: -1,
         numberOfSeasons = numberOfSeasons ?: -1,
         originCountry = originCountry ?: emptyList(),
@@ -117,21 +103,21 @@ fun TvSeriesDetailNetworkDto.toNetwork(): TvSeriesDetailNetwork {
     )
 }
 
-fun TvSeriesDetailNextEpisodeToAirDto.toNextEpisodeToAir(): TvSeriesDetailNextEpisodeToAir {
+fun TvSeriesDetailNextEpisodeToAirDto?.toNextEpisodeToAir(): TvSeriesDetailNextEpisodeToAir {
     return TvSeriesDetailNextEpisodeToAir(
-        airDate = airDate.orEmpty(),
-        episodeNumber = episodeNumber ?: -1,
-        id = id ?: -1,
-        name = name.orEmpty(),
-        overview = overview.orEmpty(),
-        productionCode = productionCode.orEmpty(),
-        seasonNumber = seasonNumber ?: -1,
-        stillPath = stillPath.orEmpty(),
-        voteAverage = voteAverage ?: -1.0,
-        voteCount = voteCount ?: -1,
-        episodeType = episodeType.orEmpty(),
-        showId = showId ?: -1,
-        runtime = runtime ?: -1,
+        airDate = this?.airDate.orEmpty(),
+        episodeNumber = this?.episodeNumber ?: -1,
+        id = this?.id ?: -1,
+        name = this?.name.orEmpty(),
+        overview = this?.overview.orEmpty(),
+        productionCode = this?.productionCode.orEmpty(),
+        seasonNumber = this?.seasonNumber ?: -1,
+        stillPath = this?.stillPath.orEmpty(),
+        voteAverage = this?.voteAverage ?: -1.0,
+        voteCount = this?.voteCount ?: -1,
+        episodeType = this?.episodeType.orEmpty(),
+        showId = this?.showId ?: -1,
+        runtime = this?.runtime ?: -1,
     )
 }
 
