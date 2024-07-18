@@ -7,27 +7,33 @@
 ### Light
 
 <div>
-<img alt="Light Home Screen" src="https://github.com/DogacTanriverdi/MovieApp/tree/master/screenshots/light_home"/>
+<img alt="Light Home Screen" src="https://github.com/DogacTanriverdi/MovieApp/blob/master/screenshots/light_home.png" width="160" height="360" float:left/>
 
-<img alt="Light Search Screen" src="https://github.com/DogacTanriverdi/MovieApp/tree/master/screenshots/light_search"/>
+<img alt="Light Search Screen" src="https://github.com/DogacTanriverdi/MovieApp/blob/master/screenshots/light_search.png" width="160" height="360" float:left/>
 
-<img alt="Light Movie Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/tree/master/screenshots/light_movie_detail"/>
+<img alt="Light Movie Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/blob/master/screenshots/light_movie_detail.png" width="160" height="360" float:left/>
 
-<img alt="Light Tv Series Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/tree/master/screenshots/light_tv_series_detail"/>
+<img alt="Light Tv Series Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/blob/master/screenshots/light_tv_series_detail.png" width="160" height="360" float:left/>
 
-<img alt="Light Cast Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/tree/master/screenshots/light_cast_detail"/>
+<img alt="Light Cast Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/blob/master/screenshots/light_cast_detail.png" width="160" height="360" float:left/>
+
+</div>
 
 ### Dark
 
-<img alt="Dark Home Screen" src="https://github.com/DogacTanriverdi/MovieApp/tree/master/screenshots/dark_home"/>
+<div>
 
-<img alt="Dark Search Screen" src="https://github.com/DogacTanriverdi/MovieApp/tree/master/screenshots/dark_search"/>
+<img alt="Dark Home Screen" src="https://github.com/DogacTanriverdi/MovieApp/blob/master/screenshots/dark_home.png" width="160" height="360" float:left/>
 
-<img alt="Dark Movie Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/tree/master/screenshots/dark_movie_detail"/>
+<img alt="Dark Search Screen" src="https://github.com/DogacTanriverdi/MovieApp/blob/master/screenshots/dark_search.png" width="160" height="360" float:left/>
 
-<img alt="Dark Tv Series Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/tree/master/screenshots/dark_tv_series_detail"/>
+<img alt="Dark Movie Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/blob/master/screenshots/dark_movie_detail.png" width="160" height="360" float:left/>
 
-<img alt="Dark Cast Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/tree/master/screenshots/dark_cast_detail"/>
+<img alt="Dark Tv Series Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/blob/master/screenshots/dark_tv_series_detail.png" width="160" height="360" float:left/>
+
+<img alt="Dark Cast Detail Screen" src="https://github.com/DogacTanriverdi/MovieApp/blob/master/screenshots/dark_cast_detail.png" width="160" height="360" float:left/>
+
+</div>
 
 ## Technologies & Libraries
 
