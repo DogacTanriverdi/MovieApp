@@ -6,6 +6,8 @@ import androidx.core.widget.addTextChangedListener
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.navigation.NavDirections
+import androidx.navigation.fragment.findNavController
 import com.dogactanriverdi.movieapp.R
 import com.dogactanriverdi.movieapp.common.gone
 import com.dogactanriverdi.movieapp.common.viewBinding
@@ -34,18 +36,15 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
         with(binding) {
             with(viewModel) {
 
-                val query = etSearch
+                ibBack.setOnClickListener {
+                    findNavController().navigateUp()
+                }
 
-                query.addTextChangedListener {
+                etSearch.addTextChangedListener {
                     it?.let {
                         if (it.isNotBlank()) {
                             val searchQuery = it.toString()
-                            viewModel.searchMulti(
-                                query = searchQuery,
-                                page = 1,
-                                language = Locale.getDefault().language,
-                                includeAdult = true
-                            )
+                            changeQuery(searchQuery)
                         } else {
                             return@let
                         }
@@ -88,6 +87,22 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
     }
 
     private fun onItemClicked(searchResult: SearchResult) {
-        // Navigate
+        findNavController().navigate(
+            when (searchResult.mediaType) {
+
+                "movie" -> SearchFragmentDirections.actionSearchFragmentToMovieDetailFragment(
+                    searchResult.id
+                )
+
+
+                "tv" -> SearchFragmentDirections.actionSearchFragmentToTvSeriesDetailFragment(
+                    searchResult.id
+                )
+
+                else -> SearchFragmentDirections.actionSearchFragmentToCastDetailFragment(
+                    searchResult.id
+                )
+            }
+        )
     }
 }

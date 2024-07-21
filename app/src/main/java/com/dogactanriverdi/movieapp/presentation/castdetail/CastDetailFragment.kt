@@ -9,8 +9,10 @@ import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.dogactanriverdi.movieapp.R
 import com.dogactanriverdi.movieapp.common.Constants.BASE_IMAGE_URL_ORIGINAL
+import com.dogactanriverdi.movieapp.common.gone
 import com.dogactanriverdi.movieapp.common.loadImage
 import com.dogactanriverdi.movieapp.common.viewBinding
+import com.dogactanriverdi.movieapp.common.visible
 import com.dogactanriverdi.movieapp.databinding.FragmentCastDetailBinding
 import com.dogactanriverdi.movieapp.domain.model.person.credit.movie.PersonMovieCreditsCast
 import com.dogactanriverdi.movieapp.domain.model.person.credit.tvseries.PersonTvSeriesCreditsCast
@@ -81,14 +83,49 @@ class CastDetailFragment : Fragment(R.layout.fragment_cast_detail) {
                 with(binding) {
 
                     if (state.isLoading) {
-
+                        shimmer.startShimmer()
+                        shimmer.visible()
+                        constraintLayout.gone()
+                        tvActorName.gone()
+                        tvBirthday.gone()
+                        tvMovies.gone()
+                        tvTvSeries.gone()
+                        tvReadMore.gone()
+                        tvActorBiography.gone()
+                        rvTvSeries.gone()
+                        rvMovies.gone()
+                        tvError.gone()
                     }
 
                     if (state.error.isNotBlank()) {
-
+                        shimmer.stopShimmer()
+                        shimmer.gone()
+                        constraintLayout.gone()
+                        tvActorName.gone()
+                        tvBirthday.gone()
+                        tvMovies.gone()
+                        tvTvSeries.gone()
+                        tvReadMore.gone()
+                        tvActorBiography.gone()
+                        rvTvSeries.gone()
+                        rvMovies.gone()
+                        tvError.visible()
+                        tvError.text = state.error
                     }
 
                     state.personDetail?.let { response ->
+                        shimmer.stopShimmer()
+                        shimmer.gone()
+                        constraintLayout.visible()
+                        tvActorName.visible()
+                        tvBirthday.visible()
+                        tvMovies.visible()
+                        tvTvSeries.visible()
+                        tvReadMore.visible()
+                        tvActorBiography.visible()
+                        rvTvSeries.visible()
+                        rvMovies.visible()
+                        tvError.gone()
                         tvActorName.text = response.name
                         tvBirthday.text = response.birthday
                         tvActorBiography.text = response.biography
@@ -105,14 +142,49 @@ class CastDetailFragment : Fragment(R.layout.fragment_cast_detail) {
                 with(binding) {
 
                     if (state.isLoading) {
-
+                        shimmer.startShimmer()
+                        shimmer.visible()
+                        constraintLayout.gone()
+                        tvActorName.gone()
+                        tvBirthday.gone()
+                        tvMovies.gone()
+                        tvTvSeries.gone()
+                        tvReadMore.gone()
+                        tvActorBiography.gone()
+                        rvTvSeries.gone()
+                        rvMovies.gone()
+                        tvError.gone()
                     }
 
                     if (state.error.isNotBlank()) {
-
+                        shimmer.stopShimmer()
+                        shimmer.gone()
+                        constraintLayout.gone()
+                        tvActorName.gone()
+                        tvBirthday.gone()
+                        tvMovies.gone()
+                        tvTvSeries.gone()
+                        tvReadMore.gone()
+                        tvActorBiography.gone()
+                        rvTvSeries.gone()
+                        rvMovies.gone()
+                        tvError.visible()
+                        tvError.text = state.error
                     }
 
                     state.personMovieCredits?.let { response ->
+                        shimmer.stopShimmer()
+                        shimmer.gone()
+                        constraintLayout.visible()
+                        tvActorName.visible()
+                        tvBirthday.visible()
+                        tvMovies.visible()
+                        tvTvSeries.visible()
+                        tvReadMore.visible()
+                        tvActorBiography.visible()
+                        rvTvSeries.visible()
+                        rvMovies.visible()
+                        tvError.gone()
                         castMovieCreditsAdapter.recyclerListDiffer.submitList(response.cast)
                     }
                 }
@@ -126,14 +198,49 @@ class CastDetailFragment : Fragment(R.layout.fragment_cast_detail) {
                 with(binding) {
 
                     if (state.isLoading) {
-
+                        shimmer.startShimmer()
+                        shimmer.visible()
+                        constraintLayout.gone()
+                        tvActorName.gone()
+                        tvBirthday.gone()
+                        tvMovies.gone()
+                        tvTvSeries.gone()
+                        tvReadMore.gone()
+                        tvActorBiography.gone()
+                        rvTvSeries.gone()
+                        rvMovies.gone()
+                        tvError.gone()
                     }
 
                     if (state.error.isNotBlank()) {
-
+                        shimmer.stopShimmer()
+                        shimmer.gone()
+                        constraintLayout.gone()
+                        tvActorName.gone()
+                        tvBirthday.gone()
+                        tvMovies.gone()
+                        tvTvSeries.gone()
+                        tvReadMore.gone()
+                        tvActorBiography.gone()
+                        rvTvSeries.gone()
+                        rvMovies.gone()
+                        tvError.visible()
+                        tvError.text = state.error
                     }
 
                     state.personTvSeriesCredits?.let { response ->
+                        shimmer.stopShimmer()
+                        shimmer.gone()
+                        constraintLayout.visible()
+                        tvActorName.visible()
+                        tvBirthday.visible()
+                        tvMovies.visible()
+                        tvTvSeries.visible()
+                        tvReadMore.visible()
+                        tvActorBiography.visible()
+                        rvTvSeries.visible()
+                        rvMovies.visible()
+                        tvError.gone()
                         castTvSeriesCreditsAdapter.recyclerListDiffer.submitList(response.cast)
                     }
                 }
