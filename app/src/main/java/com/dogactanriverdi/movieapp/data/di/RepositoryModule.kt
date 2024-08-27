@@ -1,13 +1,16 @@
 package com.dogactanriverdi.movieapp.data.di
 
+import com.dogactanriverdi.movieapp.data.repository.GenreRepositoryImpl
 import com.dogactanriverdi.movieapp.data.repository.MovieRepositoryImpl
 import com.dogactanriverdi.movieapp.data.repository.PersonRepositoryImpl
 import com.dogactanriverdi.movieapp.data.repository.SearchRepositoryImpl
 import com.dogactanriverdi.movieapp.data.repository.TvSeriesRepositoryImpl
+import com.dogactanriverdi.movieapp.data.source.remote.service.GenreService
 import com.dogactanriverdi.movieapp.data.source.remote.service.MovieService
 import com.dogactanriverdi.movieapp.data.source.remote.service.PersonService
 import com.dogactanriverdi.movieapp.data.source.remote.service.SearchService
 import com.dogactanriverdi.movieapp.data.source.remote.service.TvSeriesService
+import com.dogactanriverdi.movieapp.domain.repository.GenreRepository
 import com.dogactanriverdi.movieapp.domain.repository.MovieRepository
 import com.dogactanriverdi.movieapp.domain.repository.PersonRepository
 import com.dogactanriverdi.movieapp.domain.repository.SearchRepository
@@ -52,5 +55,12 @@ object RepositoryModule {
         searchService: SearchService
     ): SearchRepository {
         return SearchRepositoryImpl(searchService)
+    }
+
+    @[Singleton Provides]
+    fun provideGenreRepository(
+        genreService: GenreService
+    ): GenreRepository {
+        return GenreRepositoryImpl(genreService)
     }
 }
