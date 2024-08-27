@@ -16,7 +16,7 @@ import com.dogactanriverdi.movieapp.common.viewBinding
 import com.dogactanriverdi.movieapp.common.visible
 import com.dogactanriverdi.movieapp.databinding.FragmentMovieDetailBinding
 import com.dogactanriverdi.movieapp.domain.model.movie.credit.MovieCreditsCast
-import com.dogactanriverdi.movieapp.domain.model.tvseries.credit.TvSeriesCreditsCast
+import com.dogactanriverdi.movieapp.domain.model.movie.detail.MovieDetailGenre
 import com.dogactanriverdi.movieapp.presentation.moviedetail.adapter.MovieDetailCastAdapter
 import com.dogactanriverdi.movieapp.presentation.moviedetail.adapter.MovieDetailGenreAdapter
 import com.dogactanriverdi.movieapp.presentation.moviedetail.state.MovieCreditsState
@@ -35,7 +35,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
     private val binding by viewBinding(FragmentMovieDetailBinding::bind)
 
-    private val movieDetailGenreAdapter by lazy { MovieDetailGenreAdapter {} }
+    private val movieDetailGenreAdapter by lazy { MovieDetailGenreAdapter(::onGenreClicked) }
     private val movieDetailCastAdapter by lazy { MovieDetailCastAdapter(::onCastClicked) }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
@@ -123,6 +123,12 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                 }
             }
         }
+    }
+
+    private fun onGenreClicked(genre: MovieDetailGenre) {
+        val action = MovieDetailFragmentDirections
+            .actionMovieDetailFragmentToMovieGenreFragment(genre.id.toString(), genre.name)
+        findNavController().navigate(action)
     }
 
     private fun onCastClicked(cast: MovieCreditsCast) {
