@@ -1,9 +1,13 @@
 package com.dogactanriverdi.movieapp.data.di
 
+import com.dogactanriverdi.movieapp.domain.repository.GenreRepository
 import com.dogactanriverdi.movieapp.domain.repository.MovieRepository
 import com.dogactanriverdi.movieapp.domain.repository.PersonRepository
 import com.dogactanriverdi.movieapp.domain.repository.SearchRepository
 import com.dogactanriverdi.movieapp.domain.repository.TvSeriesRepository
+import com.dogactanriverdi.movieapp.domain.usecase.genre.GenreUseCases
+import com.dogactanriverdi.movieapp.domain.usecase.genre.MovieGenreUseCase
+import com.dogactanriverdi.movieapp.domain.usecase.genre.TvSeriesGenreUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.movie.MovieCreditsUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.movie.MovieDetailUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.movie.MovieUseCases
@@ -71,5 +75,15 @@ object UseCaseModule {
         searchRepository: SearchRepository
     ): SearchUseCase {
         return SearchUseCase(searchRepository)
+    }
+
+    @[Singleton Provides]
+    fun provideGenreUseCases(
+        genreRepository: GenreRepository
+    ): GenreUseCases {
+        return GenreUseCases(
+            movieGenre = MovieGenreUseCase(genreRepository),
+            tvSeriesGenre = TvSeriesGenreUseCase(genreRepository)
+        )
     }
 }
