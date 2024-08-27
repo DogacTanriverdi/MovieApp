@@ -12,10 +12,12 @@ object Constants {
     const val UPCOMING_MOVIES = "movie/upcoming"
     const val MOVIE_DETAIL = "movie/{movie_id}"
     const val MOVIE_CREDITS = "movie/{movie_id}/credits"
+    const val DISCOVER_MOVIE = "discover/movie"
 
     const val TRENDING_TV_SERIES_WEEK = "trending/tv/week"
     const val TV_SERIES_DETAIL = "tv/{series_id}"
     const val TV_SERIES_CREDITS = "tv/{series_id}/credits"
+    const val DISCOVER_TV_SERIES = "discover/tv"
 
     const val PERSON_DETAIL = "person/{person_id}"
     const val PERSON_MOVIE_CREDITS = "person/{person_id}/movie_credits"
@@ -32,4 +34,5 @@ object Constants {
     const val PERSON_ID = "person_id"
     const val QUERY = "query"
     const val INCLUDE_ADULT = "include_adult"
+    const val WITH_GENRES = "with_genres"
 }

@@ -1,21 +1,19 @@
 package com.dogactanriverdi.movieapp.data.di
 
 import android.app.Application
-import android.content.Context
 import com.chuckerteam.chucker.api.ChuckerInterceptor
 import com.dogactanriverdi.movieapp.BuildConfig
 import com.dogactanriverdi.movieapp.common.Constants.BASE_URL
 import com.dogactanriverdi.movieapp.common.NetworkInterceptor
+import com.dogactanriverdi.movieapp.data.source.remote.service.GenreService
 import com.dogactanriverdi.movieapp.data.source.remote.service.MovieService
 import com.dogactanriverdi.movieapp.data.source.remote.service.PersonService
 import com.dogactanriverdi.movieapp.data.source.remote.service.SearchService
 import com.dogactanriverdi.movieapp.data.source.remote.service.TvSeriesService
-import com.google.gson.Gson
 import com.google.gson.GsonBuilder
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
-import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
@@ -85,5 +83,10 @@ object NetworkModule {
     @Provides
     fun provideSearchService(retrofit: Retrofit): SearchService {
         return retrofit.create<SearchService>()
+    }
+
+    @[Singleton Provides]
+    fun provideGenreService(retrofit: Retrofit): GenreService {
+        return retrofit.create<GenreService>()
     }
 }
