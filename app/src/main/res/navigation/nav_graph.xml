@@ -46,6 +46,9 @@
         <action
             android:id="@+id/action_tvSeriesDetailFragment_to_castDetailFragment"
             app:destination="@id/castDetailFragment" />
+        <action
+            android:id="@+id/action_tvSeriesDetailFragment_to_tvSeriesGenreFragment"
+            app:destination="@id/tvSeriesGenreFragment" />
     </fragment>
     <fragment
         android:id="@+id/castDetailFragment"
@@ -85,6 +88,20 @@
         <action
             android:id="@+id/action_movieGenreFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
+        <argument
+            android:name="genreId"
+            app:argType="string" />
+        <argument
+            android:name="genreName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/tvSeriesGenreFragment"
+        android:name="com.dogactanriverdi.movieapp.presentation.genre.tvseries.TvSeriesGenreFragment"
+        android:label="TvSeriesGenreFragment" >
+        <action
+            android:id="@+id/action_tvSeriesGenreFragment_to_tvSeriesDetailFragment"
+            app:destination="@id/tvSeriesDetailFragment" />
         <argument
             android:name="genreId"
             app:argType="string" />

@@ -16,6 +16,7 @@ import com.dogactanriverdi.movieapp.common.viewBinding
 import com.dogactanriverdi.movieapp.common.visible
 import com.dogactanriverdi.movieapp.databinding.FragmentTvSeriesDetailBinding
 import com.dogactanriverdi.movieapp.domain.model.tvseries.credit.TvSeriesCreditsCast
+import com.dogactanriverdi.movieapp.domain.model.tvseries.detail.TvSeriesDetailGenre
 import com.dogactanriverdi.movieapp.presentation.tvseriesdetail.adapter.TvSeriesDetailCastAdapter
 import com.dogactanriverdi.movieapp.presentation.tvseriesdetail.adapter.TvSeriesDetailGenreAdapter
 import com.dogactanriverdi.movieapp.presentation.tvseriesdetail.state.TvSeriesCreditsState
@@ -32,7 +33,7 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
 
     private val viewModel: TvSeriesDetailViewModel by viewModels()
 
-    private val tvSeriesDetailGenreAdapter by lazy { TvSeriesDetailGenreAdapter {} }
+    private val tvSeriesDetailGenreAdapter by lazy { TvSeriesDetailGenreAdapter(::onGenreClicked) }
     private val tvSeriesDetailCastAdapter by lazy { TvSeriesDetailCastAdapter(::onCastClicked) }
 
     private val args: TvSeriesDetailFragmentArgs by navArgs()
@@ -124,6 +125,15 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
                 }
             }
         }
+    }
+
+    private fun onGenreClicked(genre: TvSeriesDetailGenre) {
+        val action =
+            TvSeriesDetailFragmentDirections.actionTvSeriesDetailFragmentToTvSeriesGenreFragment(
+                genre.id.toString(),
+                genre.name
+            )
+        findNavController().navigate(action)
     }
 
     private fun onCastClicked(cast: TvSeriesCreditsCast) {
