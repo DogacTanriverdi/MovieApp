@@ -66,6 +66,7 @@
         tools:text="Error!"
         android:textAlignment="center"
         android:layout_margin="10dp"
+        android:visibility="gone"
         android:textSize="20sp"
         android:textColor="@color/red"
         android:layout_gravity="center"
@@ -74,7 +75,6 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rvMovieGenre"
         android:layout_width="match_parent"
-        android:visibility="gone"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"

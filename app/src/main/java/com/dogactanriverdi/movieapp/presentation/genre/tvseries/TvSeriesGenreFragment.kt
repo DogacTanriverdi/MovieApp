@@ -8,7 +8,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.dogactanriverdi.movieapp.R
+import com.dogactanriverdi.movieapp.common.gone
 import com.dogactanriverdi.movieapp.common.viewBinding
+import com.dogactanriverdi.movieapp.common.visible
 import com.dogactanriverdi.movieapp.databinding.FragmentTvSeriesGenreBinding
 import com.dogactanriverdi.movieapp.domain.model.genre.tvseries.TvSeriesGenreResult
 import com.dogactanriverdi.movieapp.presentation.genre.tvseries.adapter.TvSeriesGenreAdapter
@@ -55,14 +57,25 @@ class TvSeriesGenreFragment : Fragment(R.layout.fragment_tv_series_genre) {
                 with(binding) {
 
                     if (state.isLoading) {
-
+                        rvTvSeriesGenre.gone()
+                        tvError.gone()
+                        shimmer.startShimmer()
+                        shimmer.visible()
                     }
 
                     if (state.error.isNotBlank()) {
-
+                        rvTvSeriesGenre.gone()
+                        shimmer.stopShimmer()
+                        shimmer.gone()
+                        tvError.text = state.error
+                        tvError.visible()
                     }
 
                     state.tvSeriesGenre?.let { response ->
+                        shimmer.stopShimmer()
+                        shimmer.gone()
+                        tvError.gone()
+                        rvTvSeriesGenre.visible()
                         tvSeriesGenreAdapter.recyclerListDiffer.submitList(response.results)
                     }
                 }
