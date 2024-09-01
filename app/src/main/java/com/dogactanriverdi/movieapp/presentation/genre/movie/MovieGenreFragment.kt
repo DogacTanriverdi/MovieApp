@@ -8,7 +8,9 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.dogactanriverdi.movieapp.R
+import com.dogactanriverdi.movieapp.common.gone
 import com.dogactanriverdi.movieapp.common.viewBinding
+import com.dogactanriverdi.movieapp.common.visible
 import com.dogactanriverdi.movieapp.databinding.FragmentMovieGenreBinding
 import com.dogactanriverdi.movieapp.domain.model.genre.movie.MovieGenreResult
 import com.dogactanriverdi.movieapp.presentation.genre.movie.adapter.MovieGenreAdapter
@@ -56,14 +58,25 @@ class MovieGenreFragment : Fragment(R.layout.fragment_movie_genre) {
                 with(binding) {
 
                     if (state.isLoading) {
-
+                        rvMovieGenre.gone()
+                        tvError.gone()
+                        shimmer.startShimmer()
+                        shimmer.visible()
                     }
 
                     if (state.error.isNotBlank()) {
-
+                        rvMovieGenre.gone()
+                        shimmer.stopShimmer()
+                        shimmer.gone()
+                        tvError.text = state.error
+                        tvError.visible()
                     }
 
                     state.movieGenre?.let { response ->
+                        rvMovieGenre.visible()
+                        shimmer.stopShimmer()
+                        shimmer.gone()
+                        tvError.gone()
                         movieGenreAdapter.recyclerListDiffer.submitList(response.results)
                     }
                 }
