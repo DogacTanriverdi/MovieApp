@@ -52,6 +52,24 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     findNavController().navigate(action)
                 }
 
+                tvSeeAllTrendingMovies.setOnClickListener {
+                    val action =
+                        HomeFragmentDirections.actionHomeFragmentToSeeAllFragment("trendingMovie")
+                    findNavController().navigate(action)
+                }
+
+                tvSeeAllTrendingTvSeries.setOnClickListener {
+                    val action =
+                        HomeFragmentDirections.actionHomeFragmentToSeeAllFragment("trendingTvSeries")
+                    findNavController().navigate(action)
+                }
+
+                tvSeeAllUpcomingMovies.setOnClickListener {
+                    val action =
+                        HomeFragmentDirections.actionHomeFragmentToSeeAllFragment("upcomingMovie")
+                    findNavController().navigate(action)
+                }
+
                 getTrendingMovies(1, Locale.getDefault().language)
                 getTrendingTvSeries(1, Locale.getDefault().language)
                 getUpcomingMovies(1, Locale.getDefault().language)

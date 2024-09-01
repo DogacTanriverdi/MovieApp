@@ -19,6 +19,9 @@
         <action
             android:id="@+id/action_homeFragment_to_searchFragment"
             app:destination="@id/searchFragment" />
+        <action
+            android:id="@+id/action_homeFragment_to_seeAllFragment"
+            app:destination="@id/seeAllFragment" />
     </fragment>
     <fragment
         android:id="@+id/movieDetailFragment"
@@ -107,6 +110,21 @@
             app:argType="string" />
         <argument
             android:name="genreName"
+            app:argType="string" />
+    </fragment>
+    <fragment
+        android:id="@+id/seeAllFragment"
+        android:name="com.dogactanriverdi.movieapp.presentation.seeall.SeeAllFragment"
+        android:label="fragment_see_all"
+        tools:layout="@layout/fragment_see_all" >
+        <action
+            android:id="@+id/action_seeAllFragment_to_movieDetailFragment"
+            app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_seeAllFragment_to_tvSeriesDetailFragment"
+            app:destination="@id/tvSeriesDetailFragment" />
+        <argument
+            android:name="type"
             app:argType="string" />
     </fragment>
 </navigation>
