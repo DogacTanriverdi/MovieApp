@@ -135,7 +135,6 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                             offscreenPageLimit = 3
                             getChildAt(0).overScrollMode = RecyclerView.OVER_SCROLL_NEVER
                             setPageTransformer(compositePageTransformer)
-                            currentItem = 10
                         }
                     }
                 }
