@@ -41,22 +41,19 @@
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
-                    android:layout_marginTop="40dp"
-                    android:textColor="@color/text_color"
-                    android:layout_marginStart="20dp"
-                    android:text="Movie App"
-                    android:textSize="25sp"
+                    android:layout_margin="10dp"
                     android:layout_weight="3"
-                    android:textStyle="bold"
-                    />
+                    android:text="Movie App"
+                    android:textColor="@color/text_color"
+                    android:textSize="25sp"
+                    android:textStyle="bold" />
 
                 <ImageButton
                     android:id="@+id/ibSearch"
                     android:layout_width="40dp"
                     android:layout_height="40dp"
                     android:layout_gravity="top|end"
-                    android:layout_marginTop="40dp"
-                    android:layout_marginEnd="20dp"
+                    android:layout_margin="10dp"
                     android:background="@drawable/bg_image_btn"
                     android:contentDescription="@string/back_button"
                     android:padding="5dp"
@@ -66,11 +63,11 @@
 
             </LinearLayout>
 
-                <androidx.viewpager2.widget.ViewPager2
-                    android:id="@+id/viewPager2"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:padding="32dp" />
+            <androidx.viewpager2.widget.ViewPager2
+                android:id="@+id/viewPager2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:padding="32dp" />
 
             <LinearLayout
                 android:layout_width="match_parent"

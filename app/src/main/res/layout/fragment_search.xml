@@ -4,8 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:layout_margin="10dp"
     android:orientation="vertical"
-    android:layout_marginTop="40dp"
     tools:context=".presentation.search.SearchFragment">
 
     <LinearLayout
@@ -17,13 +17,13 @@
             android:id="@+id/ibBack"
             android:layout_width="43dp"
             android:layout_height="43dp"
-            android:layout_marginStart="10dp"
-            android:gravity="center"
-            android:background="@drawable/bg_image_btn"
             android:layout_gravity="center"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/bg_image_btn"
             android:contentDescription="@string/back_button"
-            android:scaleType="centerCrop"
+            android:gravity="center"
             android:padding="10dp"
+            android:scaleType="centerCrop"
             android:src="@drawable/ic_back"
             app:tint="@color/white" />
 
