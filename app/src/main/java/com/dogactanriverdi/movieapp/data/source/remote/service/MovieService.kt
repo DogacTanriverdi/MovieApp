@@ -1,13 +1,11 @@
 package com.dogactanriverdi.movieapp.data.source.remote.service
 
-import com.dogactanriverdi.movieapp.BuildConfig
 import com.dogactanriverdi.movieapp.common.Constants
 import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.credit.MovieCreditsDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.detail.MovieDetailDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.trending.TrendingMoviesDto
 import com.dogactanriverdi.movieapp.data.source.remote.dto.movie.upcoming.UpcomingMoviesDto
 import retrofit2.http.GET
-import retrofit2.http.Header
 import retrofit2.http.Path
 import retrofit2.http.Query
 

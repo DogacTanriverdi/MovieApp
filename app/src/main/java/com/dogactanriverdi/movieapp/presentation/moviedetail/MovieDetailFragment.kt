@@ -39,6 +39,8 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
     private val movieDetailGenreAdapter by lazy { MovieDetailGenreAdapter(::onGenreClicked) }
     private val movieDetailCastAdapter by lazy { MovieDetailCastAdapter(::onCastClicked) }
 
+    private var posterPath = ""
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -54,11 +56,23 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                 }
 
                 ibAddToWatchList.setOnClickListener {
-                    addToWatchList(WatchListEntity(args.movieId))
+                    addToWatchList(
+                        WatchListEntity(
+                            mediaType = "movie",
+                            posterPath = posterPath,
+                            id = args.movieId
+                        )
+                    )
                 }
 
                 ibDeleteFromWatchList.setOnClickListener {
-                    deleteFromWatchList(WatchListEntity(args.movieId))
+                    deleteFromWatchList(
+                        WatchListEntity(
+                            mediaType = "movie",
+                            posterPath = posterPath,
+                            id = args.movieId
+                        )
+                    )
                     ibDeleteFromWatchList.gone()
                     ibAddToWatchList.visible()
                 }
@@ -111,6 +125,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                             )
                         tvOverviewDescription.text = response.overview
                         movieDetailGenreAdapter.recyclerListDiffer.submitList(response.genres)
+                        posterPath = response.posterPath
                     }
                 }
             }

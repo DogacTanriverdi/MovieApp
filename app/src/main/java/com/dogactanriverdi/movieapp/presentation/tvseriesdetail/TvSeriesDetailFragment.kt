@@ -39,6 +39,8 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
 
     private val args: TvSeriesDetailFragmentArgs by navArgs()
 
+    private var posterPath = ""
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -50,11 +52,23 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
                 }
 
                 ibAddToWatchList.setOnClickListener {
-                    addToWatchList(WatchListEntity(args.seriesId))
+                    addToWatchList(
+                        WatchListEntity(
+                            mediaType = "tv",
+                            posterPath = posterPath,
+                            id = args.seriesId
+                        )
+                    )
                 }
 
                 ibDeleteFromWatchList.setOnClickListener {
-                    deleteFromWatchList(WatchListEntity(args.seriesId))
+                    deleteFromWatchList(
+                        WatchListEntity(
+                            mediaType = "movie",
+                            posterPath = posterPath,
+                            id = args.seriesId
+                        )
+                    )
                     ibDeleteFromWatchList.gone()
                     ibAddToWatchList.visible()
                 }
@@ -113,6 +127,7 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
                             getString(R.string.plus_18)
                         tvOverviewDescription.text = response.overview
                         tvSeriesDetailGenreAdapter.recyclerListDiffer.submitList(response.genres)
+                        posterPath = response.posterPath
                     }
                 }
             }
