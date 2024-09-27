@@ -3,19 +3,24 @@ package com.dogactanriverdi.movieapp.presentation.moviedetail
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dogactanriverdi.movieapp.common.Resource
+import com.dogactanriverdi.movieapp.data.source.local.model.WatchListEntity
 import com.dogactanriverdi.movieapp.domain.usecase.movie.MovieUseCases
+import com.dogactanriverdi.movieapp.domain.usecase.watchlist.WatchListUseCases
 import com.dogactanriverdi.movieapp.presentation.moviedetail.state.MovieCreditsState
 import com.dogactanriverdi.movieapp.presentation.moviedetail.state.MovieDetailState
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
+import kotlinx.coroutines.flow.launchIn
+import kotlinx.coroutines.flow.onEach
 import kotlinx.coroutines.flow.onStart
 import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
 class MovieDetailViewModel @Inject constructor(
-    private val movieUseCases: MovieUseCases
+    private val movieUseCases: MovieUseCases,
+    private val watchListUseCases: WatchListUseCases
 ) : ViewModel() {
 
     private val _movieDetailState = MutableStateFlow(MovieDetailState())
@@ -23,6 +28,9 @@ class MovieDetailViewModel @Inject constructor(
 
     private val _movieCreditsState = MutableStateFlow(MovieCreditsState())
     val movieCreditsState: StateFlow<MovieCreditsState> = _movieCreditsState
+
+    private val _watchListState = MutableStateFlow<List<WatchListEntity>>(emptyList())
+    val watchListState: StateFlow<List<WatchListEntity>> = _watchListState
 
     fun getMovieDetail(movieId: Int, language: String) {
         viewModelScope.launch {
@@ -84,5 +92,23 @@ class MovieDetailViewModel @Inject constructor(
                 }
             }
         }
+    }
+
+    fun addToWatchList(watchListEntity: WatchListEntity) {
+        viewModelScope.launch {
+            watchListUseCases.addToWatchList(watchListEntity)
+        }
+    }
+
+    fun deleteFromWatchList(watchListEntity: WatchListEntity) {
+        viewModelScope.launch {
+            watchListUseCases.deleteFromWatchList(watchListEntity)
+        }
+    }
+
+    fun getAllWatchList() {
+        watchListUseCases.getAllWatchList().onEach { watchList ->
+            _watchListState.value = watchList
+        }.launchIn(viewModelScope)
     }
 }
