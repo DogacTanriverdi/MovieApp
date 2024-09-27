@@ -5,6 +5,7 @@ import com.dogactanriverdi.movieapp.domain.repository.MovieRepository
 import com.dogactanriverdi.movieapp.domain.repository.PersonRepository
 import com.dogactanriverdi.movieapp.domain.repository.SearchRepository
 import com.dogactanriverdi.movieapp.domain.repository.TvSeriesRepository
+import com.dogactanriverdi.movieapp.domain.repository.WatchListRepository
 import com.dogactanriverdi.movieapp.domain.usecase.genre.GenreUseCases
 import com.dogactanriverdi.movieapp.domain.usecase.genre.MovieGenreUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.genre.TvSeriesGenreUseCase
@@ -22,6 +23,10 @@ import com.dogactanriverdi.movieapp.domain.usecase.tvseries.TrendingTvSeriesUseC
 import com.dogactanriverdi.movieapp.domain.usecase.tvseries.TvSeriesCreditsUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.tvseries.TvSeriesDetailUseCase
 import com.dogactanriverdi.movieapp.domain.usecase.tvseries.TvSeriesUseCases
+import com.dogactanriverdi.movieapp.domain.usecase.watchlist.AddToWatchListUseCase
+import com.dogactanriverdi.movieapp.domain.usecase.watchlist.DeleteFromWatchListUseCase
+import com.dogactanriverdi.movieapp.domain.usecase.watchlist.GetAllWatchListUseCase
+import com.dogactanriverdi.movieapp.domain.usecase.watchlist.WatchListUseCases
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -84,6 +89,17 @@ object UseCaseModule {
         return GenreUseCases(
             movieGenre = MovieGenreUseCase(genreRepository),
             tvSeriesGenre = TvSeriesGenreUseCase(genreRepository)
+        )
+    }
+
+    @[Provides Singleton]
+    fun provideWatchListUseCases(
+        watchListRepository: WatchListRepository
+    ): WatchListUseCases {
+        return WatchListUseCases(
+            addToWatchList = AddToWatchListUseCase(watchListRepository),
+            deleteFromWatchList = DeleteFromWatchListUseCase(watchListRepository),
+            getAllWatchList = GetAllWatchListUseCase(watchListRepository)
         )
     }
 }
