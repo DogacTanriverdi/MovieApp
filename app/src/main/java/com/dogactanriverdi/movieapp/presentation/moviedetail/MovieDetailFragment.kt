@@ -14,6 +14,7 @@ import com.dogactanriverdi.movieapp.common.gone
 import com.dogactanriverdi.movieapp.common.loadImage
 import com.dogactanriverdi.movieapp.common.viewBinding
 import com.dogactanriverdi.movieapp.common.visible
+import com.dogactanriverdi.movieapp.data.source.local.model.WatchListEntity
 import com.dogactanriverdi.movieapp.databinding.FragmentMovieDetailBinding
 import com.dogactanriverdi.movieapp.domain.model.movie.credit.MovieCreditsCast
 import com.dogactanriverdi.movieapp.domain.model.movie.detail.MovieDetailGenre
@@ -46,13 +47,25 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
 
                 getMovieDetail(args.movieId, Locale.getDefault().language)
                 getMovieCredits(args.movieId, Locale.getDefault().language)
+                getAllWatchList()
 
                 ibBack.setOnClickListener {
                     findNavController().navigateUp()
                 }
 
+                ibAddToWatchList.setOnClickListener {
+                    addToWatchList(WatchListEntity(args.movieId))
+                }
+
+                ibDeleteFromWatchList.setOnClickListener {
+                    deleteFromWatchList(WatchListEntity(args.movieId))
+                    ibDeleteFromWatchList.gone()
+                    ibAddToWatchList.visible()
+                }
+
                 observeMovieDetailState(movieDetailState)
                 observeMovieCreditsState(movieCreditsState)
+                observeWatchListState(watchListState)
 
                 rvGenres.adapter = movieDetailGenreAdapter
                 rvCast.adapter = movieDetailCastAdapter
@@ -120,6 +133,17 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                     state.movieCredits?.let { response ->
                         movieDetailCastAdapter.recyclerListDiffer.submitList(response.cast)
                     }
+                }
+            }
+        }
+    }
+
+    private fun observeWatchListState(state: StateFlow<List<WatchListEntity>>) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            state.collect { watchList ->
+                watchList.find { args.movieId == it.id }?.let { _ ->
+                    binding.ibAddToWatchList.gone()
+                    binding.ibDeleteFromWatchList.visible()
                 }
             }
         }
