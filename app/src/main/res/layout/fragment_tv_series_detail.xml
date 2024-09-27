@@ -79,16 +79,31 @@
                     tools:text="Tv Series Name" />
 
                 <ImageButton
-                    android:id="@+id/ibFavorite"
+                    android:id="@+id/ibAddToWatchList"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="7dp"
                     android:layout_weight="1"
                     android:backgroundTint="@android:color/transparent"
-                    android:contentDescription="@string/add_to_favorite_button"
+                    android:contentDescription="@string/add_to_watch_list_button"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_favorite_border" />
+                    android:src="@drawable/ic_bookmark_border"
+                    app:tint="@color/text_color" />
+
+                <ImageButton
+                    android:id="@+id/ibDeleteFromWatchList"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/transparent"
+                    android:contentDescription="@string/delete_from_watch_list_button"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_bookmark_fill"
+                    android:visibility="gone"
+                    app:tint="@color/text_color" />
 
             </LinearLayout>
 

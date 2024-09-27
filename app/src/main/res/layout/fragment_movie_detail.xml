@@ -78,16 +78,31 @@
                     tools:text="Movie Name" />
 
                 <ImageButton
-                    android:id="@+id/ibFavorite"
+                    android:id="@+id/ibAddToWatchList"
                     android:layout_width="45dp"
                     android:layout_height="45dp"
                     android:layout_marginHorizontal="10dp"
                     android:layout_marginTop="7dp"
                     android:layout_weight="1"
                     android:backgroundTint="@android:color/transparent"
-                    android:contentDescription="@string/add_to_favorite_button"
+                    android:contentDescription="@string/add_to_watch_list_button"
                     android:scaleType="centerCrop"
-                    android:src="@drawable/ic_favorite_border" />
+                    android:src="@drawable/ic_bookmark_border"
+                    app:tint="@color/text_color" />
+
+                <ImageButton
+                    android:id="@+id/ibDeleteFromWatchList"
+                    android:layout_width="45dp"
+                    android:layout_height="45dp"
+                    android:layout_marginHorizontal="10dp"
+                    android:layout_marginTop="7dp"
+                    android:layout_weight="1"
+                    android:backgroundTint="@android:color/transparent"
+                    android:contentDescription="@string/delete_from_watch_list_button"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_bookmark_fill"
+                    android:visibility="gone"
+                    app:tint="@color/text_color" />
 
             </LinearLayout>
 
@@ -145,8 +160,8 @@
                 android:id="@+id/tvOverviewDescription"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginBottom="10dp"
                 android:layout_marginHorizontal="10dp"
+                android:layout_marginBottom="10dp"
                 tools:text="Yaygın inancın tersine, Lorem Ipsum rastgele sözcüklerden oluşmaz. Kökleri M.Ö. 45 tarihinden bu yana klasik Latin edebiyatına kadar uzanan 2000 yıllık bir geçmişi vardır. Virginia'daki Hampden-Sydney College'dan Latince profesörü Richard McClintock, bir Lorem Ipsum pasajında geçen ve anlaşılması en güç sözcüklerden biri olan 'consectetur' sözcüğünün klasik edebiyattaki örneklerini incelediğinde kesin bir kaynağa ulaşmıştır. Lorm Ipsum, Çiçero tarafından M.Ö. 45 tarihinde kaleme alınan                                       (İyi ve Kötünün Uç Sınırları) eserinin 1.10.32 ve 1.10.33 sayılı bölümlerinden gelmektedir. Bu kitap, ahlak kuramı üzerine bir tezdir ve Rönesans döneminde çok popüler olmuştur. Lorem Ipsum pasajının ilk satırı olan 1.10.32 sayılı bölümdeki bir satırdan gelmektedir." />
 
             <TextView
@@ -162,8 +177,8 @@
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/rvCast"
                 android:layout_width="match_parent"
-                android:layout_marginHorizontal="10dp"
                 android:layout_height="wrap_content"
+                android:layout_marginHorizontal="10dp"
                 android:orientation="horizontal"
                 app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
 
