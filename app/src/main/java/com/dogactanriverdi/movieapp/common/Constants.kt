@@ -35,4 +35,7 @@ object Constants {
     const val QUERY = "query"
     const val INCLUDE_ADULT = "include_adult"
     const val WITH_GENRES = "with_genres"
+
+    /* Local Database */
+    const val TABLE_NAME = "watch_list"
 }
