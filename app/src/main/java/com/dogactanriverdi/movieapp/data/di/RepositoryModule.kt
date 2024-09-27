@@ -5,6 +5,8 @@ import com.dogactanriverdi.movieapp.data.repository.MovieRepositoryImpl
 import com.dogactanriverdi.movieapp.data.repository.PersonRepositoryImpl
 import com.dogactanriverdi.movieapp.data.repository.SearchRepositoryImpl
 import com.dogactanriverdi.movieapp.data.repository.TvSeriesRepositoryImpl
+import com.dogactanriverdi.movieapp.data.repository.WatchListRepositoryImpl
+import com.dogactanriverdi.movieapp.data.source.local.WatchListDao
 import com.dogactanriverdi.movieapp.data.source.remote.service.GenreService
 import com.dogactanriverdi.movieapp.data.source.remote.service.MovieService
 import com.dogactanriverdi.movieapp.data.source.remote.service.PersonService
@@ -15,6 +17,7 @@ import com.dogactanriverdi.movieapp.domain.repository.MovieRepository
 import com.dogactanriverdi.movieapp.domain.repository.PersonRepository
 import com.dogactanriverdi.movieapp.domain.repository.SearchRepository
 import com.dogactanriverdi.movieapp.domain.repository.TvSeriesRepository
+import com.dogactanriverdi.movieapp.domain.repository.WatchListRepository
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -62,5 +65,12 @@ object RepositoryModule {
         genreService: GenreService
     ): GenreRepository {
         return GenreRepositoryImpl(genreService)
+    }
+
+    @[Provides Singleton]
+    fun provideMovieListRepository(
+        dao: WatchListDao
+    ): WatchListRepository {
+        return WatchListRepositoryImpl(dao)
     }
 }
