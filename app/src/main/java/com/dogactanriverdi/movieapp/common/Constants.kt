@@ -38,4 +38,5 @@ object Constants {
 
     /* Local Database */
     const val TABLE_NAME = "watch_list"
+    const val DATABASE_NAME = "watch_list_database"
 }
