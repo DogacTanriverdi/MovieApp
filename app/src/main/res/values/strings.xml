@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">MovieApp</string>
+    <string name="app_name">Movie App</string>
     <string name="trending_now">Trending Now</string>
     <string name="see_all">See all</string>
     <string name="trending_tv_series">Trending Tv Series</string>

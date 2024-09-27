@@ -33,20 +33,39 @@
 
             </com.facebook.shimmer.ShimmerFrameLayout>
 
-            <LinearLayout
+            <androidx.constraintlayout.widget.ConstraintLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal">
+                android:layout_height="wrap_content">
+
+                <ImageButton
+                    android:id="@+id/ibProfile"
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:layout_margin="10dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/bg_image_btn"
+                    android:contentDescription="@string/back_button"
+                    android:elevation="10dp"
+                    android:padding="5dp"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/ic_person_outline"
+                    app:layout_constraintStart_toStartOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/text_color" />
 
                 <TextView
                     android:layout_width="0dp"
                     android:layout_height="wrap_content"
                     android:layout_margin="10dp"
-                    android:layout_weight="3"
-                    android:text="Movie App"
+                    android:padding="5dp"
+                    android:text="@string/app_name"
+                    android:textAlignment="center"
                     android:textColor="@color/text_color"
                     android:textSize="25sp"
-                    android:textStyle="bold" />
+                    android:textStyle="bold"
+                    app:layout_constraintEnd_toStartOf="@+id/ibSearch"
+                    app:layout_constraintStart_toEndOf="@+id/ibProfile"
+                    app:layout_constraintTop_toTopOf="parent" />
 
                 <ImageButton
                     android:id="@+id/ibSearch"
@@ -54,14 +73,18 @@
                     android:layout_height="40dp"
                     android:layout_gravity="top|end"
                     android:layout_margin="10dp"
+                    android:layout_weight="1"
                     android:background="@drawable/bg_image_btn"
                     android:contentDescription="@string/back_button"
+                    android:elevation="10dp"
                     android:padding="5dp"
                     android:scaleType="centerCrop"
                     android:src="@drawable/ic_search"
-                    app:tint="@color/white" />
+                    app:layout_constraintEnd_toEndOf="parent"
+                    app:layout_constraintTop_toTopOf="parent"
+                    app:tint="@color/text_color" />
 
-            </LinearLayout>
+            </androidx.constraintlayout.widget.ConstraintLayout>
 
             <androidx.viewpager2.widget.ViewPager2
                 android:id="@+id/viewPager2"
