@@ -26,4 +26,7 @@
     <string name="search">Search…</string>
     <string name="poster">Poster</string>
     <string name="genres">Genres</string>
+    <string name="profile">Profile</string>
+    <string name="watch_later_movies">Watch Later Movies</string>
+    <string name="watch_later_tv_series">Watch Later Tv Series</string>
 </resources>
