@@ -14,7 +14,7 @@
 
         <ImageView
             android:id="@+id/ivMoviePoster"
-            android:layout_width="160dp"
+            android:layout_width="170dp"
             android:scaleType="centerCrop"
             android:layout_height="250dp"
             android:contentDescription="@string/movie_poster" />
