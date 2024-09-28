@@ -51,6 +51,10 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
                     findNavController().navigateUp()
                 }
 
+                ibBackRoot.setOnClickListener {
+                    findNavController().navigateUp()
+                }
+
                 ibAddToWatchList.setOnClickListener {
                     addToWatchList(
                         WatchListEntity(
@@ -94,6 +98,7 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
                 with(binding) {
 
                     if (state.isLoading) {
+                        ibBackRoot.gone()
                         nestedScrollView.gone()
                         shimmer.startShimmer()
                         shimmer.visible()
@@ -103,9 +108,13 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
                         nestedScrollView.gone()
                         shimmer.stopShimmer()
                         shimmer.gone()
+                        ibBackRoot.visible()
+                        tvError.visible()
+                        tvError.text = state.error
                     }
 
                     state.tvSeriesDetail?.let { response ->
+                        ibBackRoot.gone()
                         nestedScrollView.visible()
                         shimmer.stopShimmer()
                         shimmer.gone()

@@ -55,6 +55,10 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                     findNavController().navigateUp()
                 }
 
+                ibBackRoot.setOnClickListener {
+                    findNavController().navigateUp()
+                }
+
                 ibAddToWatchList.setOnClickListener {
                     addToWatchList(
                         WatchListEntity(
@@ -94,6 +98,7 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                 with(binding) {
 
                     if (state.isLoading) {
+                        ibBackRoot.gone()
                         nestedScrollView.gone()
                         shimmer.startShimmer()
                         shimmer.visible()
@@ -103,9 +108,13 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                         nestedScrollView.gone()
                         shimmer.stopShimmer()
                         shimmer.gone()
+                        ibBackRoot.visible()
+                        tvError.visible()
+                        tvError.text = state.error
                     }
 
                     state.movieDetail?.let { response ->
+                        ibBackRoot.gone()
                         nestedScrollView.visible()
                         shimmer.stopShimmer()
                         shimmer.gone()

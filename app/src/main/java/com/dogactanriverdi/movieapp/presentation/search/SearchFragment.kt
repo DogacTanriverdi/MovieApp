@@ -72,6 +72,7 @@ class SearchFragment : Fragment(R.layout.fragment_search) {
                     if (state.error.isNotBlank()) {
                         progressBar.gone()
                         rvSearch.gone()
+                        tvError.visible()
                         tvError.text = state.error
                     }
 
