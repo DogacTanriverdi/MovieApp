@@ -51,6 +51,11 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
 
             with(viewModel) {
 
+                swipeRefreshLayout.setOnRefreshListener {
+                    getAllWatchList()
+                    swipeRefreshLayout.isRefreshing = false
+                }
+
                 getAllWatchList()
                 observeWatchListState(watchListState)
             }

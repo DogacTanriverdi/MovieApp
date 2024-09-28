@@ -55,6 +55,12 @@ class TvSeriesDetailFragment : Fragment(R.layout.fragment_tv_series_detail) {
                     findNavController().navigateUp()
                 }
 
+                swipeRefreshLayout.setOnRefreshListener {
+                    getTvSeriesDetail(args.seriesId, Locale.getDefault().language)
+                    getTvSeriesCredits(args.seriesId, Locale.getDefault().language)
+                    swipeRefreshLayout.isRefreshing = false
+                }
+
                 ibAddToWatchList.setOnClickListener {
                     addToWatchList(
                         WatchListEntity(

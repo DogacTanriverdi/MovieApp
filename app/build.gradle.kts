@@ -111,4 +111,7 @@ dependencies {
 
     // ViewPager2
     implementation(libs.viewpager)
+
+    // Swipe Refresh Layout
+    implementation(libs.swipe.refresh.layout)
 }

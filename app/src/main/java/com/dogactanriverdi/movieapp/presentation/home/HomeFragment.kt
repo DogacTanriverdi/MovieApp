@@ -57,6 +57,13 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     findNavController().navigate(action)
                 }
 
+                swipeRefreshLayout.setOnRefreshListener {
+                    getTrendingMovies(1, Locale.getDefault().language)
+                    getTrendingTvSeries(1, Locale.getDefault().language)
+                    getUpcomingMovies(1, Locale.getDefault().language)
+                    swipeRefreshLayout.isRefreshing = false
+                }
+
                 tvSeeAllTrendingMovies.setOnClickListener {
                     val action =
                         HomeFragmentDirections.actionHomeFragmentToSeeAllFragment("trendingMovie")

@@ -59,6 +59,12 @@ class MovieDetailFragment : Fragment(R.layout.fragment_movie_detail) {
                     findNavController().navigateUp()
                 }
 
+                swipeRefreshLayout.setOnRefreshListener {
+                    getMovieDetail(args.movieId, Locale.getDefault().language)
+                    getMovieCredits(args.movieId, Locale.getDefault().language)
+                    swipeRefreshLayout.isRefreshing = false
+                }
+
                 ibAddToWatchList.setOnClickListener {
                     addToWatchList(
                         WatchListEntity(
