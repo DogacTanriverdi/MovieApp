@@ -3,8 +3,10 @@ package com.dogactanriverdi.movieapp.presentation.seeall
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.dogactanriverdi.movieapp.common.Resource
+import com.dogactanriverdi.movieapp.data.source.local.model.WatchListEntity
 import com.dogactanriverdi.movieapp.domain.usecase.movie.MovieUseCases
 import com.dogactanriverdi.movieapp.domain.usecase.tvseries.TvSeriesUseCases
+import com.dogactanriverdi.movieapp.domain.usecase.watchlist.WatchListUseCases
 import com.dogactanriverdi.movieapp.presentation.seeall.state.SeeAllTrendingMoviesState
 import com.dogactanriverdi.movieapp.presentation.seeall.state.SeeAllTrendingTvSeriesState
 import com.dogactanriverdi.movieapp.presentation.seeall.state.SeeAllUpcomingMoviesState
@@ -18,7 +20,8 @@ import javax.inject.Inject
 @HiltViewModel
 class SeeAllViewModel @Inject constructor(
     private val movieUseCases: MovieUseCases,
-    private val tvSeriesUseCases: TvSeriesUseCases
+    private val tvSeriesUseCases: TvSeriesUseCases,
+    private val watchListUseCases: WatchListUseCases
 ) : ViewModel() {
 
     private val _trendingMoviesState = MutableStateFlow(SeeAllTrendingMoviesState())
@@ -29,6 +32,9 @@ class SeeAllViewModel @Inject constructor(
 
     private val _upcomingMoviesState = MutableStateFlow(SeeAllUpcomingMoviesState())
     val upcomingMoviesState: StateFlow<SeeAllUpcomingMoviesState> = _upcomingMoviesState
+
+    private val _watchListState = MutableStateFlow<List<WatchListEntity>>(emptyList())
+    val watchListState: StateFlow<List<WatchListEntity>> = _watchListState
 
     fun getTrendingMovies(page: Int, language: String) {
         viewModelScope.launch {
@@ -119,6 +125,14 @@ class SeeAllViewModel @Inject constructor(
                         )
                     }
                 }
+            }
+        }
+    }
+
+    fun getAllWatchList() {
+        viewModelScope.launch {
+            watchListUseCases.getAllWatchList().collect { watchList ->
+                _watchListState.value = watchList
             }
         }
     }

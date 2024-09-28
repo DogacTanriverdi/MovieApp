@@ -8,7 +8,10 @@ import androidx.lifecycle.lifecycleScope
 import androidx.navigation.fragment.findNavController
 import androidx.navigation.fragment.navArgs
 import com.dogactanriverdi.movieapp.R
+import com.dogactanriverdi.movieapp.common.gone
 import com.dogactanriverdi.movieapp.common.viewBinding
+import com.dogactanriverdi.movieapp.common.visible
+import com.dogactanriverdi.movieapp.data.source.local.model.WatchListEntity
 import com.dogactanriverdi.movieapp.databinding.FragmentSeeAllBinding
 import com.dogactanriverdi.movieapp.domain.model.movie.trending.TrendingMoviesResult
 import com.dogactanriverdi.movieapp.domain.model.movie.upcoming.UpcomingMoviesResult
@@ -16,6 +19,8 @@ import com.dogactanriverdi.movieapp.domain.model.tvseries.trending.TrendingTvSer
 import com.dogactanriverdi.movieapp.presentation.seeall.adapter.SeeAllTrendingMoviesAdapter
 import com.dogactanriverdi.movieapp.presentation.seeall.adapter.SeeAllTrendingTvSeriesAdapter
 import com.dogactanriverdi.movieapp.presentation.seeall.adapter.SeeAllUpcomingMoviesAdapter
+import com.dogactanriverdi.movieapp.presentation.seeall.adapter.SeeAllWatchListMoviesAdapter
+import com.dogactanriverdi.movieapp.presentation.seeall.adapter.SeeAllWatchListTvSeriesAdapter
 import com.dogactanriverdi.movieapp.presentation.seeall.state.SeeAllTrendingMoviesState
 import com.dogactanriverdi.movieapp.presentation.seeall.state.SeeAllTrendingTvSeriesState
 import com.dogactanriverdi.movieapp.presentation.seeall.state.SeeAllUpcomingMoviesState
@@ -34,6 +39,8 @@ class SeeAllFragment : Fragment(R.layout.fragment_see_all) {
     private val seeALlTrendingMoviesAdapter by lazy { SeeAllTrendingMoviesAdapter(::onTrendingMovieClicked) }
     private val seeAllTrendingTvSeriesAdapter by lazy { SeeAllTrendingTvSeriesAdapter(::onTrendingTvSeriesClicked) }
     private val seeAllUpcomingMoviesAdapter by lazy { SeeAllUpcomingMoviesAdapter(::onUpcomingMovieClicked) }
+    private val seeAllWatchListMoviesAdapter by lazy { SeeAllWatchListMoviesAdapter(::onWatchListMovieClicked) }
+    private val seeAllWatchListTvSeriesAdapter by lazy { SeeAllWatchListTvSeriesAdapter(::onWatchListTvSeriesClicked) }
 
     private val args: SeeAllFragmentArgs by navArgs()
 
@@ -68,6 +75,20 @@ class SeeAllFragment : Fragment(R.layout.fragment_see_all) {
                         rvSeeAll.adapter = seeAllUpcomingMoviesAdapter
                         getUpcomingMovies(1, Locale.getDefault().language)
                         observeUpcomingMoviesState(upcomingMoviesState)
+                    }
+
+                    "watchListMovie" -> {
+                        tvSeeAll.text = getString(R.string.watch_list_movies)
+                        rvSeeAll.adapter = seeAllWatchListMoviesAdapter
+                        getAllWatchList()
+                        observeWatchListState(watchListState)
+                    }
+
+                    "watchListTvSeries" -> {
+                        tvSeeAll.text = getString(R.string.watch_list_tv_series)
+                        rvSeeAll.adapter = seeAllWatchListTvSeriesAdapter
+                        getAllWatchList()
+                        observeWatchListState(watchListState)
                     }
                 }
             }
@@ -148,6 +169,25 @@ class SeeAllFragment : Fragment(R.layout.fragment_see_all) {
         }
     }
 
+    private fun observeWatchListState(state: StateFlow<List<WatchListEntity>>) {
+        viewLifecycleOwner.lifecycleScope.launch {
+            state.collect { watchList ->
+
+                if (watchList.any { it.mediaType == "movie" }) {
+                    seeAllWatchListMoviesAdapter.recyclerListDiffer.submitList(
+                        watchList.filter { it.mediaType == "movie" }
+                    )
+                }
+
+                if (watchList.any { it.mediaType == "tv" }) {
+                    seeAllWatchListTvSeriesAdapter.recyclerListDiffer.submitList(
+                        watchList.filter { it.mediaType == "tv" }
+                    )
+                }
+            }
+        }
+    }
+
     private fun onTrendingMovieClicked(movie: TrendingMoviesResult) {
         val action = SeeAllFragmentDirections.actionSeeAllFragmentToMovieDetailFragment(movie.id)
         findNavController().navigate(action)
@@ -161,6 +201,18 @@ class SeeAllFragment : Fragment(R.layout.fragment_see_all) {
 
     private fun onUpcomingMovieClicked(movie: UpcomingMoviesResult) {
         val action = SeeAllFragmentDirections.actionSeeAllFragmentToMovieDetailFragment(movie.id)
+        findNavController().navigate(action)
+    }
+
+    private fun onWatchListMovieClicked(watchList: WatchListEntity) {
+        val action =
+            SeeAllFragmentDirections.actionSeeAllFragmentToMovieDetailFragment(watchList.id)
+        findNavController().navigate(action)
+    }
+
+    private fun onWatchListTvSeriesClicked(watchList: WatchListEntity) {
+        val action =
+            SeeAllFragmentDirections.actionSeeAllFragmentToTvSeriesDetailFragment(watchList.id)
         findNavController().navigate(action)
     }
 }

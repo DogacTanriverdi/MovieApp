@@ -36,6 +36,19 @@ class ProfileFragment : Fragment(R.layout.fragment_profile) {
             ibBack.setOnClickListener {
                 findNavController().navigateUp()
             }
+
+            tvSeeAllWatchLaterMovies.setOnClickListener {
+                val action =
+                    ProfileFragmentDirections.actionProfileFragmentToSeeAllFragment("watchListMovie")
+                findNavController().navigate(action)
+            }
+
+            tvSeeAllWatchLaterTvSeries.setOnClickListener {
+                val action =
+                    ProfileFragmentDirections.actionProfileFragmentToSeeAllFragment("watchListTvSeries")
+                findNavController().navigate(action)
+            }
+
             with(viewModel) {
 
                 getAllWatchList()

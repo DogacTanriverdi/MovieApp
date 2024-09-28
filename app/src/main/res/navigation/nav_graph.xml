@@ -141,5 +141,8 @@
         <action
             android:id="@+id/action_profileFragment_to_movieDetailFragment"
             app:destination="@id/movieDetailFragment" />
+        <action
+            android:id="@+id/action_profileFragment_to_seeAllFragment"
+            app:destination="@id/seeAllFragment" />
     </fragment>
 </navigation>
