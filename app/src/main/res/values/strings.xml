@@ -29,4 +29,6 @@
     <string name="profile">Profile</string>
     <string name="watch_later_movies">Watch Later Movies</string>
     <string name="watch_later_tv_series">Watch Later Tv Series</string>
+    <string name="you_haven_t_added_a_movie_yet">You haven\'t added a movie yet.</string>
+    <string name="you_haven_t_added_a_series_yet">You haven\'t added a series yet.</string>
 </resources>

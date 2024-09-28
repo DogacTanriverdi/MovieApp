@@ -52,6 +52,11 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                     findNavController().navigate(action)
                 }
 
+                ibProfile.setOnClickListener {
+                    val action = HomeFragmentDirections.actionHomeFragmentToProfileFragment()
+                    findNavController().navigate(action)
+                }
+
                 tvSeeAllTrendingMovies.setOnClickListener {
                     val action =
                         HomeFragmentDirections.actionHomeFragmentToSeeAllFragment("trendingMovie")
