@@ -110,6 +110,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         shimmerTrendingNow.visible()
                         shimmerTrendingNow.startShimmer()
                         tvErrorTrendingNow.gone()
+                        ibProfile.gone()
+                        ibSearch.gone()
+                        tvAppName.gone()
                     }
 
                     if (state.error.isNotBlank()) {
@@ -121,7 +124,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         rvTrendingMovies.gone()
                         tvErrorTrendingNow.visible()
                         tvErrorTrendingNow.text = state.error
-
+                        ibProfile.visible()
+                        ibSearch.visible()
+                        tvAppName.visible()
                     }
 
                     state.trendingMovies?.let { response ->
@@ -132,6 +137,9 @@ class HomeFragment : Fragment(R.layout.fragment_home) {
                         shimmerTrendingNow.gone()
                         tvErrorTrendingNow.gone()
                         rvTrendingMovies.visible()
+                        ibProfile.visible()
+                        ibSearch.visible()
+                        tvAppName.visible()
                         trendingMoviesAdapter.recyclerListDiffer.submitList(response.results)
                         viewPagerAdapter.recyclerListDiffer.submitList(response.results)
                         val compositePageTransformer = CompositePageTransformer()
