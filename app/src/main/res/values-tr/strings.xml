@@ -1,0 +1,36 @@
+<resources>
+    <string name="app_name">Film Vakti</string>
+    <string name="trending_now">Şimdi Trend</string>
+    <string name="see_all">Hepsini gör</string>
+    <string name="trending_tv_series">Trend Diziler</string>
+    <string name="upcoming_movies">Yaklaşan Filmler</string>
+    <string name="tv_series_poster">Dizi posteri</string>
+    <string name="movie_poster">Film posteri</string>
+    <string name="home">Ana Sayfa</string>
+    <string name="overview">Genel Bakış</string>
+    <string name="back_button">Geri butonu</string>
+    <string name="add_to_watch_list_button">İzleme listesine ekleme butonu</string>
+    <string name="delete_from_watch_list_button">İzleme listesinden silme butonu</string>
+    <string name="vote">%1$s (%2$s)</string>
+    <string name="plus_18">+18</string>
+    <string name="for_everyone">Herkes için</string>
+    <string name="in_production">Devam ediyor</string>
+    <string name="end">Bitti</string>
+    <string name="cast_profile_picture">Oyuncunun profil resmi</string>
+    <string name="casts">Oyuncular</string>
+    <string name="movies">Filmler</string>
+    <string name="read_more">Daha fazla göster…</string>
+    <string name="actor_image">Aktörün görüntüsü</string>
+    <string name="tv_series">Diziler</string>
+    <string name="read_less">Daha az göster</string>
+    <string name="search">Ara…</string>
+    <string name="poster">Poster</string>
+    <string name="genres">Türler</string>
+    <string name="profile">Profil</string>
+    <string name="watch_later_movies">Daha Sonra İzle Filmler</string>
+    <string name="watch_later_tv_series">Daha Sonra İzle Diziler</string>
+    <string name="you_haven_t_added_a_movie_yet">Henüz bir film eklemedin.</string>
+    <string name="you_haven_t_added_a_series_yet">Henüz bir dizi eklemedin.</string>
+    <string name="watch_list_movies">Film İzleme Listesi</string>
+    <string name="watch_list_tv_series">Dizi İzleme Listesi</string>
+</resources>

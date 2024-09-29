@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">Movie App</string>
+    <string name="app_name">Movie Time</string>
     <string name="trending_now">Trending Now</string>
     <string name="see_all">See all</string>
     <string name="trending_tv_series">Trending Tv Series</string>
@@ -33,5 +33,4 @@
     <string name="you_haven_t_added_a_series_yet">You haven\'t added a series yet.</string>
     <string name="watch_list_movies">Watch List Movies</string>
     <string name="watch_list_tv_series">Watch List Tv Series</string>
-    <string name="error_network">A network error has occurred! Please try again.</string>
 </resources>

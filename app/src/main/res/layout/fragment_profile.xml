@@ -74,7 +74,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="100"
-                        android:text="@string/watch_later_movies"
+                        android:text="@string/watch_list_movies"
                         android:textColor="@color/text_color"
                         android:textSize="23sp"
                         android:textStyle="bold" />
@@ -179,7 +179,7 @@
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:layout_weight="100"
-                        android:text="@string/watch_later_tv_series"
+                        android:text="@string/watch_list_tv_series"
                         android:textColor="@color/text_color"
                         android:textSize="23sp"
                         android:textStyle="bold" />
