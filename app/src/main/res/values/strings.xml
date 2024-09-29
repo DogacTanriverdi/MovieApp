@@ -33,4 +33,5 @@
     <string name="you_haven_t_added_a_series_yet">You haven\'t added a series yet.</string>
     <string name="watch_list_movies">Watch List Movies</string>
     <string name="watch_list_tv_series">Watch List Tv Series</string>
+    <string name="error_network">A network error has occurred! Please try again.</string>
 </resources>
