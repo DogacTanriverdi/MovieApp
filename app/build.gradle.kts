@@ -22,7 +22,7 @@ android {
 
     defaultConfig {
         applicationId = "com.dogactanriverdi.movieapp"
-        minSdk = 21
+        minSdk = 26
         targetSdk = 34
         versionCode = 1
         versionName = "1.0"
@@ -38,13 +38,14 @@ android {
     buildTypes {
         release {
 
-            isMinifyEnabled = false
+            isMinifyEnabled = true
             proguardFiles(
                 getDefaultProguardFile("proguard-android-optimize.txt"),
                 "proguard-rules.pro"
             )
 
             buildConfigField("String", "API_KEY", "\"$apiKey\"")
+            signingConfig = signingConfigs.getByName("debug")
         }
 
         debug {

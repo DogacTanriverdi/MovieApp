@@ -49,7 +49,7 @@ object NetworkModule {
     ): OkHttpClient {
         return OkHttpClient.Builder().apply {
             if (BuildConfig.DEBUG) addInterceptor(chuckInterceptor)
-                .addInterceptor(networkInterceptor)
+            addInterceptor(networkInterceptor)
             readTimeout(60L, TimeUnit.SECONDS)
             connectTimeout(60L, TimeUnit.SECONDS)
             writeTimeout(60L, TimeUnit.SECONDS)

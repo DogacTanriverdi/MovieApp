@@ -19,3 +19,12 @@
 # If you keep the line number information, uncomment this to
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
+
+# Retrofit ve OkHttp için Proguard kuralları
+
+-keep class retrofit2.** { *; }
+-keep class okhttp3.** { *; }
+
+# Model sınıfları için Proguard kuralları
+-keep class com.dogactanriverdi.movieapp.data.source.remote.dto.** { *; }
+-keep class com.dogactanriverdi.movieapp.data.source.local.model.** { *; }
